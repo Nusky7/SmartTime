@@ -1,0 +1,16 @@
+<div class="fondo">
+  <mat-card class="cards">
+    <form action="" #form="ngForm" style="display:grid;" (submit)=onSubmit>
+
+      <mat-form-field appearance="fill">
+        <input matInput type="text" placeholder="E-mail" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input matInput type="password" placeholder="Contraseña" [(ngModel)]="pass"  [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" >Acceder</button>
+      <button mat-raised-button color="primary" (click)="registrar()">Registrarse</button>
+    </form>
+  </mat-card>
+</div>

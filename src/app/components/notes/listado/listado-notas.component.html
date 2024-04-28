@@ -1,0 +1,20 @@
+
+<button mat-raised-button color="warn" (click)="borrarSeleccion()">Eliminar seleccionados</button>
+
+<div class="container" style="display: flex;">
+    <div mat-grid-tile>
+        <mat-selection-list #notasList>
+            <mat-list-option *ngFor="let nota of notas" [value]="nota">
+                <h3 mat-line>{{nota.titulo}}</h3>
+                <p mat-line>User: {{nota.user_id}}</p>
+                <p mat-line>{{nota.descripcion}}</p>
+                <mat-divider></mat-divider>
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+    
+</div>
+<p>
+    Options selected: {{notasList.selectedOptions.selected.length}}
+</p>
+
