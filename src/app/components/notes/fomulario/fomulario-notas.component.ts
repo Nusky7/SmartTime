@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NotesService } from 'src/app/services/notes.service';
+import { UserService } from 'src/app/services/user.service';
 import { Router, RouterModule, Routes } from '@angular/router';
 
 @Component({
@@ -12,29 +13,22 @@ export class FormularioNotasComponent implements OnInit {
   nota: any = { titulo: "", contenido: "", fechaCreacion: "" };
   mostrarForm: boolean = false;
 
-  constructor(private notasService: NotesService) {}
+  constructor(private notasService: NotesService, private userService: UserService) {}
 
   ngOnInit(): void {
-  
   }
-
-  public mostrarEntrada(): void {
-    this.mostrarForm = true;
-  }
-  
 
   public enviar() {
-    const user_id = 1;
+    
+    const user_id = this.userService.getUser();
     this.nota.user_id = user_id;
 
     this.notasService.agregarNota(this.nota).subscribe({
       next: (response: any) => {
         console.log('Nota guardada correctamente:', response);
-        // No necesitas push la nueva nota a this.notas ya que esto se hace en el componente ListadoNotasComponent
-        // this.notas.push(response);
+        console.log(this.nota.user_id);
         this.notasService.nuevaNotaSubject.next(response);
         this.nota = {};
-        // this.mostrarForm = false;
       },
       error: (error: any) => {
         console.error('Error al guardar la nota:', error);

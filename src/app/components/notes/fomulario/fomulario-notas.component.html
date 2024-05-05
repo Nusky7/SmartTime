@@ -1,16 +1,17 @@
-<div class="container" style="display: grid;">
+<div class="container" id="formNots" style="display: grid;">
     <div mat-grid-tile>
         <br>
         <br>
         <div class="form-container">
             <form action="" #form="ngForm" (ngSubmit)="enviar()">
-                <h2>Agregar nota</h2>
-                <mat-form-field appearance="outline">
+                <h2 class="txt">Agregar nota</h2>
+                <mat-form-field class="txt" appearance="outline">
                     <input matInput type="text" name="titulo" [(ngModel)]="nota.titulo" placeholder="Título" required>
                 </mat-form-field>
                 <br>
-                <mat-form-field appearance="outline">
-                    <textarea matInput name="note" id="note" [(ngModel)]="nota.descripcion" placeholder="Descripción" required></textarea>
+                <mat-form-field  class="txt" appearance="outline">
+                    <textarea matInput name="note" id="note" [(ngModel)]="nota.descripcion" 
+                        placeholder="Descripción" required></textarea>
                 </mat-form-field>
                 <br>
                 <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">Enviar</button>

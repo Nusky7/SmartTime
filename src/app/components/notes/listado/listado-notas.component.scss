@@ -1,5 +1,40 @@
-.container, p{
-    position: relative;
-    margin-left: auto;
-    max-width:50%;
+
+#fecha{
+    float: right;
+    color: rgb(145, 145, 145);
 }
+
+
+.container{
+  position: absolute;
+  justify-content: right;
+  margin: 3% 3% 0 10%;
+  // min-width: 60%;
+  max-width: fit-content;
+  height: 15vh;
+}
+
+.nota-contenedor{
+  width: 140vh;
+  cursor:pointer;
+
+}
+  
+  // .nota-contenedor {
+  //   display:flex;
+  //   flex-direction: column;
+  //   width: 100%;
+  //   // padding: 8px 16px;
+  //   box-sizing: border-box;
+  //   cursor: pointer;
+  // }
+  
+  
+  mat-list-option {
+    padding: 0;
+    margin-bottom: 1%;
+  }
+  
+  button{
+    float: right;
+  }

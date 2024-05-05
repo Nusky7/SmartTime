@@ -11,9 +11,19 @@ private apiURL = "http://localhost/API/index.php";
 
   constructor(private http: HttpClient) { }
 
+  userId: number | null = null;
+
+  setUser(userId: number) {
+    this.userId = userId;
+  }
+  getUser(): number | null {
+    return this.userId;
+  }
+
   autenticarUsuario(correo: string, contrasena: string): Observable<any> {
-    const body = { correo, contrasena };
-    return this.http.post<any>(`${this.apiURL}/usuario/login`, body);
+    const usuario = { correo, contrasena };
+    console.log('Datos de usuario:', usuario);
+    return this.http.post<any>(`${this.apiURL}/usuario/login`, usuario);
 }
 
   // Obtener todos los usuarios
@@ -21,7 +31,8 @@ private apiURL = "http://localhost/API/index.php";
     return this.http.get<any[]>(`${this.apiURL}/index.php`);
   }
 
-  insertarUsuario(usuario: any): Observable<any> {
+  insertarUsuario(nombre: string, correo: string, contrasena: string): Observable<any> {
+    const usuario = { nombre, correo, contrasena };
     return this.http.post<any>(`${this.apiURL}/usuario/registro`, usuario);
   }
 

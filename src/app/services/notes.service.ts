@@ -12,7 +12,13 @@ export class NotesService {
   constructor(private http: HttpClient ) { }
 
 private apiURL = "http://localhost/API/index.php";
-private ruta ="NOTAS"
+private notaAgredadaSubject = new Subject<void>();
+
+notaAgredada$ = this.nuevaNotaSubject.asObservable();
+
+  mostrarNuevaNota() {
+    this.nuevaNotaSubject.next();
+  }
 
 consultarNotas(): Observable<any[]> {
   return this.http.get<any[]>(`${this.apiURL}/notas`);
@@ -37,7 +43,7 @@ modificarNota(notaModificada: any): Observable<any> {
 public eliminarNotas(id: number): Observable<any> {
   const url = `http://localhost/API/index.php/notas/${id}`;
   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  return this.http.delete(url, { headers });
+  return this.http.delete(url, {headers: headers});
 }
 
 

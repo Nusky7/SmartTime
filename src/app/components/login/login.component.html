@@ -1,16 +1,25 @@
 <div class="fondo">
   <mat-card class="cards">
-    <form action="" #form="ngForm" style="display:grid;" (submit)=onSubmit>
+    <form action="" #form="ngForm" style="display:grid;" (submit)="onSubmit()">
 
-      <mat-form-field appearance="fill">
-        <input matInput type="text" placeholder="E-mail" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <input matInput type="password" placeholder="Contraseña" [(ngModel)]="pass"  [ngModelOptions]="{standalone: true}">
+      <mat-form-field class="input" appearance="fill" *ngIf="mostrarNombre">
+        <input matInput type="text" placeholder="Nombre" name="nombre"
+         [(ngModel)]="nombre" required>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" >Acceder</button>
-      <button mat-raised-button color="primary" (click)="registrar()">Registrarse</button>
+      <mat-form-field class="input" appearance="fill">
+        <input matInput type="email" placeholder="E-mail" name="correo"
+         [(ngModel)]="correo" required>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <input matInput type="password" placeholder="Contraseña" name="contrasena"
+        [(ngModel)]="contrasena" required>
+      </mat-form-field>
+     
+        <button mat-raised-button color="primary" type="submit" >Acceder</button>
+        <button mat-raised-button color="primary" type="button" 
+        (click)="mostrarNombre ? registrar() : mostrarNombre = true">Registrarse</button>
+   
     </form>
   </mat-card>
 </div>

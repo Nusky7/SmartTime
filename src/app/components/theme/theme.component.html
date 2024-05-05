@@ -1,0 +1,16 @@
+
+<mat-sidenav-container class="sidenav-cn">
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          Tema
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="cambioTema(lightClass)">Light Purple</button>
+          <button mat-menu-item (click)="cambioTema(lightOneClass)">Light BlueGray</button>
+          <button mat-menu-item (click)="cambioTema(darkClass)">Dark Pink</button>
+          <button mat-menu-item (click)="cambioTema(darkOneClass)">Dark Purple</button>
+        </mat-menu>
+      </mat-toolbar>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

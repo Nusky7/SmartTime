@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+// import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,12 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
-  // constructor(private router: Router) {
-  //   this.router.navigate(['homeComponent']);
-  //  }
+  
   ngOnInit(): void {
   }
 
+
 }
+
+
+

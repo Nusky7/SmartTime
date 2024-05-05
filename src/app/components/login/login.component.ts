@@ -1,7 +1,9 @@
 import { UserService } from '../../services/user.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { filter, Subject, take, takeUntil } from 'rxjs';
+import { Component } from '@angular/core';
+// import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -10,44 +12,100 @@ import { filter, Subject, take, takeUntil } from 'rxjs';
 })
 export class LoginComponent  {
 
-constructor(private userService: UserService, private router: Router) {}
+constructor(private userService: UserService, private router: Router,
+  // private _snackBar: MatSnackBar,
+  private dialog: MatDialog) {}
 
-email: string = '';
-pass: string = '';
+correo: string = '';
+contrasena: string = '';
+nombre: string = '';
 errorMsg: string = '';
+mostrarNombre: boolean = false;
+
+
+validarCorreo(correo: string): boolean {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(correo);
+}
+
+// openSnackBar(message: string, action: string) {
+//   this._snackBar.open(message, action, {
+//     duration: 4000,
+//   });
+// }
+
+openDialog(message: string): void {
+  const dialogRef = this.dialog.open(LoginDialogComponent, {
+    data: { message: message }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('El diálogo se cerró');
+  });
+}
+
+nombreRegistro() {
+  if (this.mostrarNombre) {
+    if (this.nombre && this.correo && this.contrasena) {
+      this.registrar();
+    }
+  } else {
+    console.log("Error al registrar");
+  }
+}
 
 onSubmit(): void {
-  this.userService.autenticarUsuario(this.email, this.pass).subscribe({
+  this.userService.autenticarUsuario(this.correo, this.contrasena).subscribe({
     next: (response) => {
-      // Aquí debes almacenar la información del usuario en el localStorage
-      // y redirigir al usuario a la página principal de la aplicación
-      localStorage.setItem('user', JSON.stringify(response));
-      this.router.navigate(['/notas']);
+      if (!this.correo || !this.contrasena || !this.validarCorreo(this.correo)) {
+        this.openDialog("Por favor ingrese un correo electrónico válido y una contraseña");
+        return;
+      }
+      if (response.usuario && response.token) {
+        localStorage.setItem('user', JSON.stringify(response));
+        this.userService.setUser(response.usuario.id);
+        this.router.navigate(['/notas']);
+        console.log(response.usuario.id);
+      } else if (response.status === 'error') {
+        this.openDialog(response.mensaje);
+      }
     },
     error: (error) => {
-      // Aquí debes manejar el error de autenticación y mostrar un mensaje de error en la interfaz de usuario
-      this.errorMsg = 'Correo electrónico o contraseña incorrectos';
+      console.log("Inicio fallido", error);
+      this.openDialog("Error de inicio de sesión. Por favor, inténtalo de nuevo más tarde.");
     }
   });
 }
 
 
-registrar() {
-  const nuevoUsuario = {
-    email: this.email,
-    password: this.pass
-  };
+public registrar() {
 
-  this.userService.insertarUsuario(nuevoUsuario).subscribe(
+  const passRegex = /^.{4,}$/;
+
+  if (!this.nombre || !this.correo || !this.contrasena) {
+    this.openDialog("Rellene todos los campos con información válida");
+    return;
+  }
+  if (this.nombre, this.correo, this.contrasena){
+  this.userService.insertarUsuario(this.nombre,this.correo, this.contrasena).subscribe(
     (response) => {
+      if (!this.nombre && !this.correo || !passRegex.test(this.contrasena) || !this.validarCorreo(this.correo)) {
+        this.openDialog("Por favor, ingrese un nombre, un correo electrónico y una contraseña válidos");
+        return;
+      }
       console.log('Usuario registrado correctamente', response);
-      // Aquí puedes redirigir al usuario a la página de inicio de sesión o a otra página de tu aplicación
-    },
+      this.openDialog("Usuario registrado. Inicie sesión.");
+      this.mostrarNombre = false;
+      this.correo = this.correo;
+      this.contrasena = "";
+      },
     (error) => {
-      console.error('Error al registrar el usuario', error);
-      // Aquí puedes mostrar un mensaje de error en la interfaz de usuario
+      console.log('Error al registrar el usuario', error);
+      this.errorMsg = "Error al registrar el usuario";
     }
   );
+
+}}
+ 
 }
 
-}

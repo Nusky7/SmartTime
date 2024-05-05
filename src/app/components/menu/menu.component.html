@@ -1,8 +1,9 @@
 
-<nav mat-tab-nav-bar [backgroundColor]="" [tabPanel]="tabPanel">
+<nav mat-tab-nav-bar class="mat-deeppurple-amber" [backgroundColor]="" [tabPanel]="tabPanel">
     <a mat-tab-link routerLink="/home" routerLinkActive #homeLink="routerLinkActive" [active]="homeLink.isActive">Home</a>
     <a mat-tab-link routerLink="/login" routerLinkActive #loginLink="routerLinkActive" [active]="loginLink.isActive">Login</a>
     <a mat-tab-link routerLink="/notas" routerLinkActive #notasLink="routerLinkActive" [active]="notasLink.isActive">Notas</a>
+    <a mat-tab-link routerLink="/calendar" routerLinkActive #calendarLink="routerLinkActive" [active]="calendarLink.isActive">Calendario</a>
   </nav>
   <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
   

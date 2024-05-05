@@ -8,9 +8,24 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatInputModule} from '@angular/material/input'; 
 import {MatCardModule} from '@angular/material/card';  
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CalendarComponent } from '../components/calendar/calendar.component';
+import { FormsModule, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
+
+
+
+
+
 
 @NgModule({
-  declarations: [],
+  declarations: [CalendarComponent],
   imports: [
     CommonModule,
     MatMenuModule,
@@ -20,7 +35,18 @@ import {MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
+    FormsModule
+    
   
   ],
   exports: [
@@ -31,7 +57,17 @@ import {MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
+    FormsModule
   ]
 })
 export class MaterialModule { }

@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { NotesService } from 'src/app/services/notes.service';
-// import { Router, RouterModule, Routes } from '@angular/router';
-
 
 @Component({
   selector: 'app-notes',
@@ -11,17 +7,15 @@ import { NotesService } from 'src/app/services/notes.service';
 })
 export class NotesComponent implements OnInit {
 
-  nuevaNotaSubscription: Subscription = new Subscription();
-
-  nota: any = { titulo:"", contenido:"", fechaCreacion:""};
+  // Array que contiene todas las notas provenientes del formulario 
+  // (La creación de notas se maneja en el componete formulario-notas)
   notas: any[] = [];
+  // Booleano para mostrar el formulario (Sin utilizar de momento)
   mostrarForm: boolean = false;
 
-  constructor(private notasService: NotesService) {}
+  constructor() {}
 
-  
-  
   ngOnInit(): void {
-  }
 
-}
+    }
+  }

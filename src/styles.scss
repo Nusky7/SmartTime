@@ -1,4 +1,143 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@include mat.core();
+// @include mat.strong-focus-indicators();
+
+// Definición de paletas para el tema claro Deepurple&Amber
+$theme-light-primary: mat-palette($mat-deep-purple);
+$theme-light-accent: mat-palette($mat-amber, A200, A100, A400);
+$theme-light-warn: mat-palette($mat-red);
+// Se define el tema utilizando sus paletas de colores
+$theme-light: mat-light-theme($theme-light-primary, $theme-light-accent, $theme-light-warn);
+
+// Definición de paletas para el tema claro BlueGray&Pink
+$theme-light-one-primary: mat-palette($mat-blue-grey);
+$theme-light-one-accent: mat-palette($mat-pink, A200, A100, A400);
+$theme-light-one-warn: mat-palette($mat-red);
+
+$theme-light-one: mat-light-theme($theme-light-one-primary, $theme-light-one-accent, $theme-light-one-warn);
+
+// Definición de paletas para el tema oscuro Pink&BlueGray
+$theme-dark-primary: mat-palette($mat-pink, 700, 500, 900);
+$theme-dark-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+$theme-dark-warn: mat-palette($mat-red);
+
+$theme-dark: mat-dark-theme($theme-dark-primary, $theme-dark-accent, $theme-dark-warn);
+
+// Definición de paletas para el tema oscuro Purple&Green
+$theme-dark-one-primary: mat-palette($mat-purple, 700, 500, 800);
+$theme-dark-one-accent: mat-palette($mat-green, A200, A100, A400);
+$theme-dark-one-warn: mat-palette($mat-red);
+
+$theme-dark-one: mat-dark-theme($theme-dark-one-primary, $theme-dark-one-accent, $theme-dark-one-warn);
+
+// Se aplican/Incluyen los temas a todos los componentes
+@include mat.all-component-themes($theme-light);
+@include mat.all-component-themes($theme-light-one);
+@include mat.all-component-themes($theme-dark);
+@include mat.all-component-themes($theme-dark-one);
+
+
+// Se definen las clases para cada uno de los temas
+.theme-light {
+  @include mat.all-component-themes($theme-light);
+  @include mat.strong-focus-indicators-theme($theme-light);
+}
+
+.theme-light-one {
+  @include mat.all-component-themes($theme-light-one);
+  @include mat.strong-focus-indicators-theme($theme-light-one);
+}
+
+.theme-dark {
+  @include mat.all-component-themes($theme-dark);
+  @include mat.strong-focus-indicators-theme($theme-dark);
+  background-color: rgb(51, 51, 51) !important;
+}
+
+.theme-dark-one {
+  @include mat.all-component-themes($theme-dark-one);
+  @include mat.strong-focus-indicators-theme($theme-dark-one);
+  background-color: rgb(51, 51, 51) !important;
+  
+}
+
+// Arreglo para el color de algunos elementos que se mostraban negros en fondos oscuros
+.theme-dark, .theme-dark-one {
+  .txt {
+    color: rgb(229, 229, 229);
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline-start,
+  .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-color: white;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline-gap {
+    border-bottom-color: white;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    border-color: white;
+  }
+
+  .mat-form-field-appearance-outline.mat-form-field-can-float .mat-form-field-label,
+  .mat-form-field-appearance-outline.mat-form-field-should-float .mat-form-field-label {
+    color: white;
+  }
+
+  .mat-form-field-appearance-outline.mat-form-field-has-label .mat-form-field-underline {
+    display: none;
+  }
+
+  .mat-form-field-appearance-outline.mat-form-field-can-float .mat-form-field-ripple,
+  .mat-form-field-appearance-outline.mat-form-field-should-float .mat-form-field-ripple {
+    background-color: white;
+  }
+}
+
+// Creación de una paleta de colores rosa claro personalizada:
+// $light-pink: (
+//   50: #fce4ec,
+//   100: #f8bbd0,
+//   200: #f48fb1,
+//   300: #f06292,
+//   400: #f59bb9,
+//   500: #f8a5c0,
+//   600: #cf7797,
+//   700: #c2185b,
+//   800: #ad1457,
+//   900: #880e4f,
+//   A100: #ff80ab,
+//   A200: #ff4081,
+//   A400: #f50057,
+//   A700: #c51162,
+//   contrast: (
+//     50: #000,
+//     100: #000,
+//     200: #000,
+//     300: #000,
+//     400: #000,
+//     500: #fff,
+//     600: #fff,
+//     700: #fff,
+//     800: #fff,
+//     900: #fff,
+//     A100: #000,
+//     A200: #fff,
+//     A400: #fff,
+//     A700: #fff,
+//   )
+// );
+
+// $pink-palette: mat-palette($light-pink);
