@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
-## Description
+# Description
 
 SmartTime is a web application designed to help users manage their time more efficiently. It provides features such as task management, notes, calendar integration, and project tracking to help users stay organized and productive.
 
