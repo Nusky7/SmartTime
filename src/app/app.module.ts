@@ -25,6 +25,8 @@ import { ConfirmComponent } from './components/notes/confirm/confirm.component';
 import { ThemeComponent } from './components/theme/theme.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 
+// import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     LoginDialogComponent,
     ConfirmComponent,
     DetallesNotaComponent,
-    CalendarComponent
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     HttpClientModule,
     DatePipe,
     ReactiveFormsModule,
+    // MatButtonModule
   ],
   providers: [
     UserService,

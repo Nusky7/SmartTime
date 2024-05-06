@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatMenuModule } from '@angular/material/menu';
+import { _MatMenuTriggerBase, MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
@@ -18,6 +18,7 @@ import { FormsModule, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
+import { MatMenuTrigger } from '@angular/material/menu';
 
 
 
@@ -45,7 +46,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSidenavModule,
     MatToolbarModule,
     MatSlideToggleModule,
-    FormsModule
+    FormsModule,
+    
     
   
   ],
@@ -67,7 +69,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSidenavModule,
     MatToolbarModule,
     MatSlideToggleModule,
-    FormsModule
+    FormsModule,
+    MatMenuTrigger
 
   ]
 })

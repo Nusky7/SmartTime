@@ -1,23 +1,49 @@
 
 #fecha{
     float: right;
+    margin-right:7%;
     color: rgb(145, 145, 145);
+  font-family: 'Urbanist';
 }
 
 
 .container{
   position: absolute;
   justify-content: right;
-  margin: 3% 3% 0 10%;
-  // min-width: 60%;
+  margin: 2% 3% 0 10%;
   max-width: fit-content;
   height: 15vh;
 }
 
+.mat-selection{
+  padding: 3%;
+  border: 1px outset;
+  border-radius: 1vw;
+  box-shadow: 0px 0px 10px rgba(156, 156, 156, 0.748);
+}
+#p{
+  font-size: 19px;
+  font-weight:500;
+  margin-top: auto;
+  font-family: 'Urbanist';
+}
+span{
+  font-size: 16px;
+  font-weight: 50;
+}
+
 .nota-contenedor{
+  margin-bottom: 3%;
   width: 140vh;
   cursor:pointer;
+  
 
+
+}
+
+.divider{
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
   
   // .nota-contenedor {

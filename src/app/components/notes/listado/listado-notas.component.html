@@ -1,15 +1,14 @@
 
 <div class="container">
-    <mat-selection-list #notasList>
+    <mat-selection-list class="mat-selection" #notasList>
       <mat-list-option dense *ngFor="let nota of notas" [value]="nota" >
          <span class="nota-contenedor" (click)="abrirNota(nota); $event.stopPropagation()"
          (keydown.enter)="abrirNota(nota); $event.stopPropagation()" >
-
-          <span style="font-weight: 400;">{{ nota.titulo }} &nbsp; 
-          <span id="fecha">{{ formatoFecha(nota.fechaCreacion) }}</span></span>
-          <p style="font-weight: 250;">{{ nota.descripcion }}</p>
-        
-        <mat-divider></mat-divider>
+          <p id="p">{{ nota.titulo }}
+          <span id="fecha">{{ formatoFecha(nota.fechaCreacion) }}</span><br>
+          <span style="font-weight: 250;">{{ nota.descripcion }}</span>
+          <br>
+        <mat-divider class="divider"></mat-divider>
         </span>
       </mat-list-option>
     </mat-selection-list>

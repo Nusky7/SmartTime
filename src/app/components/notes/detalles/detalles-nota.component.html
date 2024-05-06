@@ -1,15 +1,16 @@
 
-<h1 mat-dialog-title>Editar Nota</h1>
-<div mat-dialog-content>
-  <mat-form-field>
-    <input matInput [(ngModel)]="nota.titulo" name="titulo" placeholder="Título">
-  </mat-form-field>
-  <br>
-  <mat-form-field >
-    <textarea id="txt" matInput [(ngModel)]="nota.descripcion" name="descripcion" placeholder="Descripción"></textarea>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button color="primary" (click)="guardarNota()" >Guardar</button>
-  <button mat-button color="warn" (click)="dialogRef.close()">Cerrar</button>
-</div>
+
+  <h1 mat-dialog-title>Editar Nota</h1>
+  <div mat-dialog-content style="width: 100vw;">
+    <mat-form-field>
+      <input matInput [(ngModel)]="nota.titulo" name="titulo" placeholder="Título">
+    </mat-form-field>
+    <br>
+    <mat-form-field >
+      <textarea id="txt" matInput [(ngModel)]="nota.descripcion" name="descripcion" placeholder="Descripción"></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button color="primary" (click)="guardarNota()" >Guardar</button>
+    <button mat-button color="warn" (click)="dialogRef.close()">Cerrar</button>
+  </div>

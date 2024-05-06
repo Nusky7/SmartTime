@@ -5,13 +5,83 @@
 h1{
     margin-left: auto;
     font-family: 'Urbanist';
-    font-size: 30px;
+    font-size: 35px;
+    font-weight: bold;
 }
 span{
     font-family: 'Urbanist';
     margin-top: 1.5%;
 }
 #logo{
-    width: 3vw;
+    width: 4vw;
     margin: 10px 10px;
 }
+.mat-fab{
+    border-radius: 10px;
+    height: 6vh;
+    width: 13vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -1%;
+
+}
+
+
+@media only screen and (max-width: 720px){
+    #logo {
+        height: 8vh;
+        width: 17vw;
+        margin-right: 0;
+        margin-left: 5%;
+    }
+}
+@media only screen and (max-width: 720px) {
+    #title {
+        display: absolute;
+        margin-right: 4%;
+
+    }
+}
+@media only screen and (max-width: 414px) {
+    #title {
+        display: absolute;
+
+    }
+}
+@media only screen and (max-width: 390px) {
+    #title {
+        display: absolute;
+        margin-right: 3%;
+
+    }
+}
+@media only screen and (max-width: 393px) {
+    #title {
+        display: absolute;
+        margin-right: 3%;
+
+    }
+}
+@media only screen and (max-width: 360px) {
+    #title {
+        display: absolute;
+        margin-left: 10%;
+
+    }
+}
+@media only screen and (max-width: 320px) {
+    #title {
+        display: flex;
+        margin-left: 5%;
+    }
+    #logo{
+       height: 11vh;
+       width: 20vw;
+    }
+    .mat-fab{
+        height: 9vh;
+    }
+   
+}
+
