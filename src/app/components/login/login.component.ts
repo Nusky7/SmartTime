@@ -28,12 +28,6 @@ validarCorreo(correo: string): boolean {
   return regex.test(correo);
 }
 
-// openSnackBar(message: string, action: string) {
-//   this._snackBar.open(message, action, {
-//     duration: 4000,
-//   });
-// }
-
 openDialog(message: string): void {
   const dialogRef = this.dialog.open(LoginDialogComponent, {
     data: { message: message }
@@ -64,7 +58,7 @@ onSubmit(): void {
       if (response.usuario && response.token) {
         localStorage.setItem('user', JSON.stringify(response));
         this.userService.setUser(response.usuario.id);
-        this.router.navigate(['/notas']);
+        this.router.navigate(['/home']);
         console.log(response.usuario.id);
       } else if (response.status === 'error') {
         this.openDialog(response.mensaje);

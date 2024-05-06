@@ -1,8 +1,8 @@
 
-<mat-sidenav-container class="sidenav-cn">
+<mat-sidenav-container class="sidenav-container" >
     <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-toolbar color="primary" class="mat-toolbar" style="display:flex;">
+        <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
           Tema
         </button>
         <mat-menu #menu="matMenu">
@@ -11,6 +11,9 @@
           <button mat-menu-item (click)="cambioTema(darkClass)">Dark Pink</button>
           <button mat-menu-item (click)="cambioTema(darkOneClass)">Dark Purple</button>
         </mat-menu>
+        <h1>SmartTime 
+          <span >2024</span></h1>
       </mat-toolbar>
+      
     </mat-sidenav-content>
   </mat-sidenav-container>
