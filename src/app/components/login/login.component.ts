@@ -1,5 +1,5 @@
 import { UserService } from '../../services/user.service';
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 // import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -10,18 +10,24 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent  {
+export class LoginComponent implements OnInit {
+
+  correo: string = '';
+  contrasena: string = '';
+  nombre: string = '';
+  errorMsg: string = '';
+  mostrarNombre: boolean = false;
 
 constructor(private userService: UserService, private router: Router,
   // private _snackBar: MatSnackBar,
   private dialog: MatDialog) {}
 
-correo: string = '';
-contrasena: string = '';
-nombre: string = '';
-errorMsg: string = '';
-mostrarNombre: boolean = false;
-
+  ngOnInit(): void {
+    if (this.userService.dentroSesion()) {
+      this.router.navigate(['/home']);
+    }
+    
+  }
 
 validarCorreo(correo: string): boolean {
   const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -58,8 +64,10 @@ onSubmit(): void {
       if (response.usuario && response.token) {
         localStorage.setItem('user', JSON.stringify(response));
         this.userService.setUser(response.usuario.id);
-        this.router.navigate(['/home']);
+        // this.userService.dentroSesion();
+        this.router.navigate(['/notas']);
         console.log(response.usuario.id);
+        console.log('Iniciada Sesión');
       } else if (response.status === 'error') {
         this.openDialog(response.mensaje);
       }

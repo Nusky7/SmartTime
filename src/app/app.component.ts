@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
-// import { ThemeService } from './services/theme.service';
+import { Component, OnInit} from '@angular/core';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  // themeService: ThemeService; // Declarar themeService como una propiedad
+  // constructor(private userService: UserService) {}
 
-  // constructor(_themeService: ThemeService) {
-  //   this.themeService = _themeService; // Asignar _themeService a themeService
-  // }
+  // dentroSesion:boolean = false;
+
+  ngOnInit(): void {
+    // this.dentroSesion = this.userService.dentroSesion();
+  }
+
+ 
 }

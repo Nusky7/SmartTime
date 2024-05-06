@@ -19,6 +19,10 @@ private apiURL = "http://localhost/API/index.php";
   getUser(): number | null {
     return this.userId;
   }
+  
+  dentroSesion(): boolean {
+    return this.userId !== null;
+  }
 
   autenticarUsuario(correo: string, contrasena: string): Observable<any> {
     const usuario = { correo, contrasena };

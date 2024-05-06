@@ -23,6 +23,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginDialogComponent } from './components/login/login-dialog/login-dialog.component';
 import { ConfirmComponent } from './components/notes/confirm/confirm.component';
 import { ThemeComponent } from './components/theme/theme.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ThemeComponent } from './components/theme/theme.component';
     ListadoNotasComponent,
     LoginDialogComponent,
     ConfirmComponent,
-    DetallesNotaComponent
+    DetallesNotaComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

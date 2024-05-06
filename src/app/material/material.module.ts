@@ -13,7 +13,7 @@ import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dial
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { CalendarComponent } from '../components/calendar/calendar.component';
+// import { CalendarComponent } from '../components/calendar/calendar.component';
 import { FormsModule, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,7 +25,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
-  declarations: [CalendarComponent],
+  declarations: [],
   imports: [
     CommonModule,
     MatMenuModule,
@@ -68,6 +68,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatToolbarModule,
     MatSlideToggleModule,
     FormsModule
+
   ]
 })
 export class MaterialModule { }

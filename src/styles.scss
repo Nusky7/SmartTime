@@ -6,8 +6,8 @@ html, body {
 }
 
 body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0; 
+  font-family: 'Urbanist';
 }
 
 @include mat.core();
@@ -73,8 +73,8 @@ $theme-dark-one: mat-dark-theme($theme-dark-one-primary, $theme-dark-one-accent,
 }
 
 // Arreglo para el color de algunos elementos que se mostraban negros en fondos oscuros
-.theme-dark, .theme-dark-one {
-  .txt {
+.theme-dark, .theme-dark-one, #ctxt {
+  .txt, #mat-calendar-button-0 {
     color: rgb(229, 229, 229);
   }
 

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MenuComponent } from '../menu/menu.component';
+import { ThemeComponent } from '../theme/theme.component';
 
 @Component({
   selector: 'app-calendar',
