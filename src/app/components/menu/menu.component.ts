@@ -13,8 +13,6 @@ export class MenuComponent implements OnInit {
   constructor(private router: Router) {
     this.router.navigate(['/menu.component.html']);
    }
-
   ngOnInit(): void {
   }
-
 }

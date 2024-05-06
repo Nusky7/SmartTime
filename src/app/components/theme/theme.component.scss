@@ -1,6 +1,9 @@
-// .mat-toolbar{
-//     flex-direction: row-reverse;
-// }
+.mat-toolbar{
+    margin: 0;
+    width: auto !important;
+    height: 8vh;
+    overflow-y: hidden;
+}
 
 h1{
     margin-left: auto;
@@ -14,6 +17,7 @@ span{
 }
 #logo{
     width: 4vw;
+    height: auto !important;
     margin: 10px 10px;
 }
 .mat-fab{
@@ -26,8 +30,18 @@ span{
     margin-left: -1%;
 
 }
-
-
+.accent-menu{
+    display: flex;
+    flex-direction: column;
+}
+#theme{
+    font-family: 'Urbanist';
+    font-size: 17px !important;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    padding-right: 1.1% !important;
+    text-shadow: 0px 2.1px 7px (rgba(123, 123, 123, 0.969));
+}
 @media only screen and (max-width: 720px){
     #logo {
         height: 8vh;

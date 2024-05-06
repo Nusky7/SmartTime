@@ -52,6 +52,7 @@ $theme-dark-one: mat-dark-theme($theme-dark-one-primary, $theme-dark-one-accent,
 .theme-light {
   @include mat.all-component-themes($theme-light);
   @include mat.strong-focus-indicators-theme($theme-light);
+  
 }
 
 .theme-light-one {

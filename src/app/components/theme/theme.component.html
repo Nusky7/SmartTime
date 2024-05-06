@@ -6,7 +6,7 @@
         <button mat-raised-button color="accent" id="theme" [matMenuTriggerFor]="menu" [ngClass]="{'mat-fab': smallScreen}">
           Tema
         </button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #menu="matMenu" panelClass="accent-menu">
           <button mat-menu-item (click)="cambioTema(lightClass)">Light Purple</button>
           <button mat-menu-item (click)="cambioTema(lightOneClass)">Light BlueGray</button>
           <button mat-menu-item (click)="cambioTema(darkClass)">Dark Pink</button>

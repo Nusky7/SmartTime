@@ -1,9 +1,9 @@
 import { UserService } from '../../services/user.service';
 import { Component, OnInit} from '@angular/core';
-// import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+// import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -64,7 +64,6 @@ onSubmit(): void {
       if (response.usuario && response.token) {
         localStorage.setItem('user', JSON.stringify(response));
         this.userService.setUser(response.usuario.id);
-        // this.userService.dentroSesion();
         this.router.navigate(['/notas']);
         console.log(response.usuario.id);
         console.log('Iniciada Sesión');
@@ -106,8 +105,6 @@ public registrar() {
       this.errorMsg = "Error al registrar el usuario";
     }
   );
-
 }}
- 
 }
 
