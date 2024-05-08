@@ -2,6 +2,25 @@
 <app-menu></app-menu>
 
 <div class="calen">
-  <mat-calendar #calendar class="calendar" [selected]="selectedDate" 
-  (selectedChange)="onDateSelected($event)"></mat-calendar>
+  <mat-calendar #calendar class="txt" [selected]="selectedDate" 
+  (_userSelection)="this.selectedEvents"
+  (selectedChange)="fechaSelect($event)"></mat-calendar>
 </div>
+
+
+<div class="boxEventos">
+  <h1 class="txt">Eventos</h1>
+  <div *ngFor="let evento of selectedEvents">
+    <mat-card class="mat-card">
+      <mat-card-title>{{ evento.titulo }}</mat-card-title>
+      <mat-card-subtitle>Hasta el: {{ formatoFecha( evento.fechaFin) }}</mat-card-subtitle>
+      <mat-card-content>{{ evento.descripcion }}</mat-card-content>
+      <mat-card-actions class="buttons">
+        <button mat-mini-fab color="warn" style="float: right; margin-left:1.5%;" >X</button>&nbsp;
+        <button mat-mini-fab color="accent" style="float: right;" >V</button>
+      </mat-card-actions>
+      <mat-card-footer class="footer">{{ formatoFecha( evento.fechaInicio) }}</mat-card-footer>
+    </mat-card>
+  </div>
+</div>
+

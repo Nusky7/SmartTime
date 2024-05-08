@@ -14,13 +14,14 @@ import { ConfirmComponent } from '../confirm/confirm.component';
 export class ListadoNotasComponent implements OnInit {
   @Input() notas: any[] = [];
   @ViewChild('notasList') notasList!: MatSelectionList;
+
   cambiosNoGuardados: boolean = false;
   nota = false;
-
 
   constructor(private notasService: NotesService, 
     private userService: UserService,
     public dialog: MatDialog) { }
+    
 
   ngOnInit(): void {
     this.mostrar();

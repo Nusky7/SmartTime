@@ -1,26 +1,6 @@
-// #calendar {
-//     --mat-calendar-header-height: 0;
-//     --mat-calendar-arrow-size: 30px;
-//   }
-  
-//   #calendar .mat-calendar-period-button {
-//     position: static;
-//     margin-top: 10px;
-//   }
-  
-//   #calendar .mat-calendar-arrow {
-//     position: static;
-//     margin-top: 10px;
-//     margin-left: 10px;
-//   }
-  
-//   #calendar .mat-calendar-body-container {
-//     margin-top: 10px;
-//   }
 
-  
 .calen{
-    width: 48vw;
+    width: 52vw;
     float: right;
     margin-top: -2.5%;
     
@@ -28,6 +8,27 @@
 .calendar{
     font-size: 10vw !important;
 }
-// .mat-calendar-body-cell-container, .mat-calendar-body-cell-content {
-//     font-size: 10vw !important;
-// }
+.boxEventos{
+    display: grid;
+    width: 45vw;
+    height: 90vh !important;
+    margin-left: 1%;
+}
+h1{
+    text-align: center !important;
+}
+
+.mat-card{
+    margin-bottom: 2%;
+    padding: 4%;
+    width: 40vw !important;
+    margin-right: 4% !important;
+    border-radius: 10px;
+}
+.buttons{
+   margin-bottom: 3.3%;
+}
+.footer{
+    float: right;
+    //  margin-right: 2%;
+}

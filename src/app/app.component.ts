@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { UserService } from './services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,15 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent implements OnInit {
 
-  // constructor(private userService: UserService) {}
-
-  // dentroSesion:boolean = false;
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
-    // this.dentroSesion = this.userService.dentroSesion();
+    const dentroSesion = this.userService.dentroSesion();
+    if (dentroSesion) {
+      this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
  

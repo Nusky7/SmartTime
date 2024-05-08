@@ -24,18 +24,16 @@ consultarNotas(): Observable<any[]> {
   return this.http.get<any[]>(`${this.apiURL}/notas`);
 }
 
-// Método para consultar una nota por su ID
+
 consultarNotaPorId(user_id: number): Observable<any> {
   return this.http.get<any>(`${this.apiURL}/notas`, {params:{user_id: user_id}});
 }
 
-// Método para agregar una nueva nota
 agregarNota(nuevaNota: any): Observable<any> {
   this.nuevaNotaSubject.next(nuevaNota);
   return this.http.post<any>(`${this.apiURL}/notas`, nuevaNota);
 }
 
-// Método para modificar una nota existente
 modificarNota(notaModificada: any): Observable<any> {
   return this.http.put<any>(`${this.apiURL}/notas/${notaModificada.id}`, notaModificada);
 }

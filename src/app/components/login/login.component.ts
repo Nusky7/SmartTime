@@ -64,7 +64,7 @@ onSubmit(): void {
       if (response.usuario && response.token) {
         localStorage.setItem('user', JSON.stringify(response));
         this.userService.setUser(response.usuario.id);
-        this.router.navigate(['/notas']);
+        this.router.navigate(['/calendar']);
         console.log(response.usuario.id);
         console.log('Iniciada Sesión');
       } else if (response.status === 'error') {
