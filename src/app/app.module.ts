@@ -25,6 +25,8 @@ import { ConfirmComponent } from './components/notes/confirm/confirm.component';
 import { ThemeComponent } from './components/theme/theme.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { DialogoComponent } from './components/calendar/dialogo/dialogo.component';
+
 
 // import {MatButtonModule} from '@angular/material/button';
 
@@ -44,6 +46,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
     DetallesNotaComponent,
     CalendarComponent,
     ProjectsComponent,
+    DialogoComponent,
   ],
   imports: [
     BrowserModule,

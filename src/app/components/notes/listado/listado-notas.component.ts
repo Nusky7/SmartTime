@@ -46,7 +46,6 @@ export class ListadoNotasComponent implements OnInit {
   }
 
   public mostrar(): void {
-
     const user_id = this.userService.getUser();
     if (!this.cambiosNoGuardados) {
     if (user_id !== null) { 
@@ -67,14 +66,11 @@ export class ListadoNotasComponent implements OnInit {
   }
   
   public formatoFecha(fecha: string | null): string {
-    if (!fecha){
-      return "";
-    }
+    if (!fecha){return "";}
     const partesFecha = fecha.split('-'); 
     const año = partesFecha[0];
     const mes = partesFecha[1];
     const día = partesFecha[2];
-    // Formatea a dd/mm/yy:
     return `${día}/${mes}/${año}`;
   }
 

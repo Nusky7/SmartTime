@@ -3,23 +3,49 @@
 
 <div class="calen">
   <mat-calendar #calendar class="txt" [selected]="selectedDate" 
-  (_userSelection)="this.selectedEvents"
   (selectedChange)="fechaSelect($event)"></mat-calendar>
 </div>
 
 
-<div class="boxEventos">
-  <h1 class="txt">Eventos</h1>
-  <div *ngFor="let evento of selectedEvents">
+<div class="boxEventos" style="display:grid;">
+ 
+  <div class="events"> 
+    <button mat-raised-button color="accent" style="float: right; 
+    font-size: 40px; height:11vh; width:6vw" 
+    (click)="abrirDialogo()">+</button>
+  <h2 class="txt"> Mis Eventos</h2>
+
+  <div class="eventoSelect">
+      <!-- <mat-hint style="display: flex; margin-top: 1.5%;">Seleccionar fechas y pulsar &nbsp; 
+          <svg  width="50" height="50" viewBox="0 0 99 99" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier"> <title>plus-circle</title> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-466.000000, -1089.000000)" fill="#bababa"> 
+          <path d="M488,1106 L483,1106 L483,1111 C483,1111.55 482.553,1112 482,1112 C481.447,1112 481,1111.55 481,1111 L481,1106 L476,1106 C475.447,1106 475,1105.55 475,1105 C475,1104.45 475.447,1104 476,1104 L481,1104 L481,1099 C481,1098.45 481.447,1098 482,1098 C482.553,1098 483,1098.45 483,1099 L483,1104 L488,1104 C488.553,1104 489,1104.45 489,1105 C489,1105.55 488.553,1106 488,1106 L488,1106 Z M482,1089 C473.163,1089 466,1096.16 466,1105 C466,1113.84 473.163,1121 482,1121 C490.837,1121 498,1113.84 498,1105 C498,1096.16 490.837,1089 482,1089 L482,1089 Z" id="plus-circle" sketch:type="MSShapeGroup">
+          </path> </g> </g> </g></svg>
+      </mat-hint> -->
+  </div>
+</div>
+
+
+  <div *ngFor="let evento of selectedEvents" class="cards">
     <mat-card class="mat-card">
       <mat-card-title>{{ evento.titulo }}</mat-card-title>
-      <mat-card-subtitle>Hasta el: {{ formatoFecha( evento.fechaFin) }}</mat-card-subtitle>
+      <mat-card-subtitle>Creado el: {{ formatoFecha( evento.fechaInicio) }}</mat-card-subtitle>
       <mat-card-content>{{ evento.descripcion }}</mat-card-content>
+
       <mat-card-actions class="buttons">
-        <button mat-mini-fab color="warn" style="float: right; margin-left:1.5%;" >X</button>&nbsp;
-        <button mat-mini-fab color="accent" style="float: right;" >V</button>
+        <button mat-mini-fab color="warn" id="b1"
+        (click)="borrarEvento()" >
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="-5px" width="22" height="22" viewBox="0,0,256,256">
+            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" 
+            stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" 
+            style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M42,5h-10v-2c0,-1.65234 -1.34766,-3 -3,-3h-8c-1.65234,0 -3,1.34766 -3,3v2h-10c-0.55078,0 -1,0.44922 -1,1c0,0.55078 0.44922,1 1,1h1.08594l3.60938,40.51563c0.125,1.39063 1.30859,2.48438 2.69531,2.48438h19.21484c1.38672,0 2.57031,-1.09375 2.69531,-2.48437l3.61328,-40.51562h1.08594c0.55469,0 1,-0.44922 1,-1c0,-0.55078 -0.44531,-1 -1,-1zM20,44c0,0.55469 -0.44922,1 -1,1c-0.55078,0 -1,-0.44531 -1,-1v-33c0,-0.55078 0.44922,-1 1,-1c0.55078,0 1,0.44922 1,1zM20,3c0,-0.55078 0.44922,-1 1,-1h8c0.55078,0 1,0.44922 1,1v2h-10zM26,44c0,0.55469 -0.44922,1 -1,1c-0.55078,0 -1,-0.44531 -1,-1v-33c0,-0.55078 0.44922,-1 1,-1c0.55078,0 1,0.44922 1,1zM32,44c0,0.55469 -0.44531,1 -1,1c-0.55469,0 -1,-0.44531 -1,-1v-33c0,-0.55078 0.44531,-1 1,-1c0.55469,0 1,0.44922 1,1z"></path></g></g>
+          </svg>
+      </button>&nbsp;
+
+        <button mat-mini-fab color="accent" id="b2">V</button>
       </mat-card-actions>
-      <mat-card-footer class="footer">{{ formatoFecha( evento.fechaInicio) }}</mat-card-footer>
+      <mat-card-footer class="footer">Fecha Límite: {{ formatoFecha( evento.fechaFin) }}</mat-card-footer>
     </mat-card>
   </div>
 </div>

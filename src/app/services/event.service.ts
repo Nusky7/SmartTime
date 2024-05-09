@@ -8,12 +8,9 @@ import { UserService } from './user.service';
 export class EventService {
   private apiUrl = 'http://localhost/API/index.php'; 
 
-
-
   constructor(private http: HttpClient, private userService: UserService) { }
 
    
-
   consultarEventos() {
     return this.http.get(`${this.apiUrl}/eventos`);
   }

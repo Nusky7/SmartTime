@@ -11,7 +11,7 @@ body {
 }
 
 @include mat.core();
-// @include mat.strong-focus-indicators();
+//  @include mat.strong-focus-indicators();
 
 // Definición de paletas para el tema claro Deepurple&Amber
 $theme-light-primary: mat-palette($mat-deep-purple);

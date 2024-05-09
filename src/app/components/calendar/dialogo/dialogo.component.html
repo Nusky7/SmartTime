@@ -1,0 +1,54 @@
+<div>
+<div mat-dialog-content class="container">
+  <form [formGroup]="eventoForm">
+    <mat-stepper orientation="vertical" formArrayName="formArray" [linear]="isLinear" #stepper>
+      <mat-step formGroupName="0" [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Inserta el título del evento</ng-template>
+        <mat-form-field>
+          <mat-label>Título</mat-label>
+          <input matInput placeholder="Título del Evento" formControlName="titulo" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext color="accent" type="button">Next</button>
+        </div>
+      </mat-step>
+
+        <mat-step formGroupName="1" [stepControl]= "secondFormGroup">
+          <ng-template matStepLabel>Rellena los detalles del evento</ng-template>
+            <mat-form-field>
+              <mat-label>Descripcion</mat-label>
+              <textarea matInput id="txtArea" placeholder="Descripción del Evento" formControlName="descripcion" required></textarea>
+            </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious type="button">Back</button>
+            <button mat-button matStepperNext color="accent" type="button">Next</button>
+          </div>
+      </mat-step>
+      
+      <mat-step formGroupName="2" [stepControl]="thirdFormGroup">
+        <mat-form-field appearance="fill">
+          <ng-template matStepLabel>Selecciona el rango de fechas</ng-template>
+          <mat-label>Fecha Inicio - Fecha Fin</mat-label>
+          <mat-date-range-input [formGroup]="thirdFormGroup" [rangePicker]="picker">
+            <input matStartDate formControlName="fechaInicio" placeholder="Fecha de inicio">
+            <input matEndDate formControlName="fechaFin" placeholder="Fecha de fin">
+          </mat-date-range-input>
+          <mat-hint>Duración del evento</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+      
+          <mat-error *ngIf="thirdFormGroup.controls.fechaInicio.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="thirdFormGroup.controls.fechaFin.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious  type="button">Back</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </form>
+  <div mat-dialog-actions>
+    <button mat-button color="accent" (click)="dialogRef.close(false)">Agregar</button>
+    <button mat-button (click)="dialogRef.close(true)">Cancelar</button>
+  </div>
+</div>
+</div>

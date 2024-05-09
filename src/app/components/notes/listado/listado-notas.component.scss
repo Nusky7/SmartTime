@@ -1,7 +1,7 @@
 
 #fecha{
     float: right;
-    margin-right:7%;
+    margin-right:10%;
     color: rgb(145, 145, 145);
   font-family: 'Urbanist';
 }
@@ -36,8 +36,6 @@ span{
   margin-bottom: 3%;
   width: 140vh;
   cursor:pointer;
-  
-
 
 }
 
@@ -54,13 +52,24 @@ span{
   //   box-sizing: border-box;
   //   cursor: pointer;
   // }
-  
+  #fecha{
+    display: flex;
+  }
   
   mat-list-option {
     padding: 0;
-    margin-bottom: 1%;
+    margin-bottom: 1.5%;
   }
   
   button{
     float: right;
+    border-radius: 1vw;
+    margin-bottom: 2% !important;
+    margin-top: -1% !important;
+  }
+  button:hover{
+    opacity: 0.8;
+  }
+  .container{
+    max-width: 70%;
   }
