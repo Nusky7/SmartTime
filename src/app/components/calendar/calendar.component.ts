@@ -3,10 +3,7 @@ import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
 import { DialogoComponent } from './dialogo/dialogo.component';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms'
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-
-import { DateRange } from '@angular/material/datepicker';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-calendar',
@@ -21,7 +18,6 @@ export class CalendarComponent implements OnInit  {
   selectedEvents: any = [];
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-
   fechaInicio: Date = new Date();
   fechaFin: Date = new Date();
 
@@ -31,6 +27,7 @@ export class CalendarComponent implements OnInit  {
      {this.firstFormGroup = formBuilder.group({});
      this.secondFormGroup = formBuilder.group({});
     }
+
 
   ngOnInit(): void {
    this.getEventos();
@@ -44,36 +41,35 @@ export class CalendarComponent implements OnInit  {
 }
 
 
-  getEventos(): any {
+  public getEventos(): any {
     const user_id = this.userService.getUser();
     if (user_id !== null) {
     this.eventService.consultarEventoPorId(user_id).subscribe((data) => {
+      this.fechaSelect(this.selectedDate);
       this.eventos = data;
       });
       
   }}
 
-  setEventos(){
-    const user_id = this.userService.getUser();
-    if (user_id !== null) {
-    this.eventService.crearEvento(user_id).subscribe((data) => {
-      this.eventos = data;
-    });
-      
-  }}
-
-  abrirDialogo(): void {
+  public abrirDialogo(): void {
     const dialogRef = this.dialog.open(DialogoComponent, {
       width: '25vw', height: '55vh',
+      panelClass: 'dialogoCalendar',
       data: { fechaInicio: this.fechaInicio, fechaFin: this.fechaFin }
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.eventos = [...this.eventos, result];
+        this.selectedEvents = [...this.selectedEvents, result];
+        this.fechaSelect(this.selectedDate);
+        this.getEventos();
+      }
       console.log('El dialogo fue cerrado');
     });
   }
 
-  fechasSeleccionadas(fechas: Date[]): void {
+  public fechasSeleccionadas(fechas: Date[]): void {
     this.fechaInicio = fechas[0];
     this.fechaFin = fechas[1];
   }
@@ -88,35 +84,53 @@ export class CalendarComponent implements OnInit  {
     const anyo = fechaDate.getFullYear();
     const hora = fechaDate.getHours().toString().padStart(2, '0');
     const minuto = fechaDate.getMinutes().toString().padStart(2, '0');
-    return `${dia}/${mes}/${anyo} - ${hora}:${minuto}h`;
+    return `${dia}/${mes}/${anyo} a las ${hora}:${minuto}h`;
   }
   
   public fechaSelect(date: Date) {
    console.log('Seleccionaste la fecha:', date);
-  this.selectedEvents = this.eventos.filter((event: any) => {
+   this.selectedDate = date;
+  //  this.selectedDate = this.getEventos();
+   this.selectedEvents = this.eventos.filter((event: any) => {
     const eventStart = new Date(event.fechaInicio).setHours(0, 0, 0, 0);
     return eventStart === date.setHours(0, 0, 0, 0);
+    
   });
   if (this.selectedEvents.length > 0) {
     console.log('Evento seleccionado:', this.selectedEvents[0].titulo);
+   
   }
 }
 
-modificarEvento(){
+modificarEvento(evento: any) {
+  const dialogRef = this.dialog.open(DialogoComponent, {
+    width: '25vw',
+    height: '55vh',
+    data: { evento: evento }
+  });
 
-}
-
-borrarEvento(){
-  if (this.selectedEvents.length > 0) {
-  this.eventService.borrarEvento(this.eventos).subscribe(data => {
-    this.eventos = data;
-    console.log(this.eventos);
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.eventService.modificarEvento(result).subscribe(() => {
+        this.getEventos();
+      });
+    }
   });
 }
+
+borrarEvento(evento: { id: number }) {
+  const eventId = evento.id;
+
+  this.eventService.borrarEvento(eventId).subscribe(data => {
+  this.eventos = this.eventos.filter((e: { id: number; }) => e.id !== eventId);
+  this.selectedEvents = this.selectedEvents.filter((e: { id: number; }) => e.id !== eventId);
+  this.eventos = [...this.eventos];
+  this.selectedEvents = [...this.selectedEvents];
+
+  console.log(this.eventos);
+  });
+
 }
-
-
-
 
 }
   

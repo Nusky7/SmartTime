@@ -10,9 +10,9 @@ import { UserService } from './services/user.service';
 import { NotesService } from './services/notes.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
-// import { ThemeService } from './services/theme.service';
-
+// Componentes
 import { LoginComponent } from './components/login/login.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { FormularioNotasComponent } from './components/notes/fomulario/fomulario-notas.component';
@@ -26,9 +26,16 @@ import { ThemeComponent } from './components/theme/theme.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { DialogoComponent } from './components/calendar/dialogo/dialogo.component';
-
-
-// import {MatButtonModule} from '@angular/material/button';
+import { NprojectComponent } from './components/home/nproject/nproject.component';
+import { EditarEventoComponent } from './components/calendar/editar-evento/editar-evento.component';
+import { DashComponent } from './components/home/dash/dash.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { HomeCalendarComponent } from './components/home/home-calendar/home-calendar.component';
 
 
 @NgModule({
@@ -47,6 +54,11 @@ import { DialogoComponent } from './components/calendar/dialogo/dialogo.componen
     CalendarComponent,
     ProjectsComponent,
     DialogoComponent,
+    NprojectComponent,
+    EditarEventoComponent,
+    DashComponent,
+    HomeCalendarComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -58,12 +70,17 @@ import { DialogoComponent } from './components/calendar/dialogo/dialogo.componen
     HttpClientModule,
     DatePipe,
     ReactiveFormsModule,
-    // MatButtonModule
+    NgxMaterialTimepickerModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule
   ],
   providers: [
     UserService,
-    NotesService,
-    // ThemeService
+    NotesService
   ],
   bootstrap: [AppComponent]
 })

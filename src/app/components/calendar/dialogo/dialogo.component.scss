@@ -1,6 +1,20 @@
 .container{
     scrollbar-width: none !important;
+    padding-bottom: 4%;
 }
 #txtArea{
     height: 10vh !important;
+}
+button:hover {
+    opacity: 0.89;
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(131, 131, 131, 0.89) !important;
+}
+.txt{
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.9) !important;
+}
+@media only screen and (max-width: 800px){
+    .dialogoCalendar{
+        min-width: 600px !important;
+    }
 }

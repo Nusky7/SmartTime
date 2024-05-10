@@ -1,19 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
+// import { BehaviorSubject, Observable, of } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
+
   private apiUrl = 'http://localhost/API/index.php'; 
 
   constructor(private http: HttpClient, private userService: UserService) { }
 
-   
-  consultarEventos() {
-    return this.http.get(`${this.apiUrl}/eventos`);
-  }
 
   consultarEventoPorId(user_id: number) {
     const userId = this.userService.getUser();
@@ -32,3 +31,4 @@ export class EventService {
     return this.http.delete(`${this.apiUrl}/eventos/${id}`);
   }
 }
+

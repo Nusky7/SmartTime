@@ -1,0 +1,41 @@
+<div class="newProContainer">
+    <!-- <button mat-raised-button color="accent" (click)="abrirSteps()">Crear proyecto</button> -->
+    <mat-horizontal-stepper headerPosition="top" *ngIf="!stepper" [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Nombra el Proyecto</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Título" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button color="accent" matStepperNext>Hecho</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Descripción del proyecto</ng-template>
+            <mat-form-field>
+              <textarea matInput placeholder="Mi proyecto es sobre... " formControlName="secondCtrl" required></textarea>
+            </mat-form-field>
+            <div>
+              <button mat-button class="txt" matStepperPrevious>Atrás</button>
+              <button mat-button color="accent" matStepperNext>Hecho</button>
+              <!-- <button mat-button color="warn" (click)="stepper.reset()">Reset</button> -->
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Hecho</ng-template>
+          <h4  class="txt"> Proyecto creado.</h4>
+         <span  class="txt">Añade tareas desde <br> la sección de Proyectos.</span>
+          <div>
+            <button mat-button  class="txt" color="accent" matStepperPrevious>Atrás</button>
+            <!-- <button mat-button color="primary" (click)="cerrar()">Cerrar</button> -->
+            <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
+          </div>
+          
+        </mat-step>
+        
+      </mat-horizontal-stepper>
+    </div>

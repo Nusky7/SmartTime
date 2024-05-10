@@ -7,10 +7,10 @@
           Tema
         </button>
         <mat-menu #menu="matMenu" panelClass="accent-menu">
-          <button mat-mini-fab id="one" (click)="cambioTema(lightClass)"></button>
-          <button mat-mini-fab id="two" (click)="cambioTema(lightOneClass)"></button>
-          <button mat-mini-fab id="three" (click)="cambioTema(darkClass)"></button>
-          <button mat-mini-fab id="four" (click)="cambioTema(darkOneClass)"></button>
+          <button mat-mini-fab id="one" (click)="cambioTema(lightClass)"></button><span class="txt">Deepurple&Amber</span>
+          <button mat-mini-fab id="two" (click)="cambioTema(lightOneClass)"></button><span class="txt">BlueGray&Pink</span>
+          <button mat-mini-fab id="three" (click)="cambioTema(darkClass)"></button><span class="txt">Pink&Blurgray</span>
+          <button mat-mini-fab id="four" (click)="cambioTema(darkOneClass)"></button><span class="txt">Green&Purple</span>
         </mat-menu>
         <h1 id="title">SmartTime</h1>
           <img id="logo" src="/assets/sTime1.png" alt="logo"> <span *ngIf="!smallScreen">2024</span> 
