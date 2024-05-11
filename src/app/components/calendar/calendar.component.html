@@ -7,15 +7,11 @@
 </div>
 
 <div class="boxEventos" style="display:grid;">
- 
-  <div class="events"> 
-    <button mat-raised-button color="accent" class="addEvento"(click)="abrirDialogo()">+</button>
-  <h2 class="txt"> Mis Eventos</h2>
+  <mat-card-header class="events"> <span style="width: 100%;">
+  <h2 class="txt"> Mis Eventos</h2></span>
+  <button mat-raised-button color="accent" class="addEvento"(click)="abrirDialogo()">+</button>
+</mat-card-header>
 
-  <div class="eventoSelect">
-    <!-- Si ahora quito este div estropea el diseño y no tengo tiempo de rehacerlo -->
-  </div>
-</div>
 
   <div *ngFor="let evento of selectedEvents" class="cards">
     <mat-card class="mat-card">

@@ -1,6 +1,7 @@
 
 <div class="container">
-    <mat-selection-list class="mat-selection" #notasList>
+  <mat-card class="mat-selection">
+    <mat-selection-list  #notasList>
       <mat-divider class="divider"></mat-divider>
       <mat-list-option dense *ngFor="let nota of notas" [value]="nota" >
          <span class="nota-contenedor" (click)="abrirNota(nota); $event.stopPropagation()"
@@ -13,6 +14,7 @@
         </span>
       </mat-list-option>
     </mat-selection-list>
+  </mat-card>
 
     <div>
       <p class="txt" id="options" *ngIf="nota">

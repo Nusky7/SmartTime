@@ -7,12 +7,13 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class NotesService {
+
   nuevaNotaSubject = new Subject<any>();
 
   constructor(private http: HttpClient ) { }
 
 private apiURL = "http://localhost/API/index.php";
-private notaAgredadaSubject = new Subject<void>();
+// private notaAgredadaSubject = new Subject<void>();
 
 notaAgredada$ = this.nuevaNotaSubject.asObservable();
 

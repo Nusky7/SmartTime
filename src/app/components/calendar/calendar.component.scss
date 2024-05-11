@@ -16,6 +16,7 @@
    
 }
 .events{
+    display: flexbox !important;
     margin-top: 2%;
     margin-bottom: 2%;
     border-radius: 7px;
@@ -26,18 +27,14 @@
 #divider{
     margin-top: 0;
 }
+
 h2{
-    display: flex;
-    float: left;
-    margin-left: 32%;
+    margin-left: 35%;
     font-size: 2vw;
 }
-.eventoSelect{
-    display: flex ;
-    float: right ;
-}
+
 .addEvento{
-    float: right; 
+    float: right !important; 
     font-size: 40px; 
     height:11vh; 
     width:6vw;
@@ -76,10 +73,7 @@ button:hover {
 #b1{
     margin-left:1.5%;
 }
-// #b2{
-//     float: right;
-//     border-radius: 1vw;
-// }
+
 .footer{
     float: left;
     margin-bottom: 2%;

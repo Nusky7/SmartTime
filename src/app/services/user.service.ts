@@ -30,7 +30,6 @@ private apiURL = "http://localhost/API/index.php";
     return this.http.post<any>(`${this.apiURL}/usuario/login`, usuario);
 }
 
-  // Obtener todos los usuarios
   obtenerUsuarios(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiURL}/index.php`);
   }
@@ -40,12 +39,10 @@ private apiURL = "http://localhost/API/index.php";
     return this.http.post<any>(`${this.apiURL}/usuario/registro`, usuario);
   }
 
-  // Actualizar un usuario existente
-  actualizarUsuario(usuario: any): Observable<any> {
+  editarUsuario(usuario: any): Observable<any> {
     return this.http.put<any>(`${this.apiURL}/index.php`, usuario);
   }
 
-  // Eliminar un usuario por su ID
   eliminarUsuario(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiURL}/index.php?id=${id}`);
   }
