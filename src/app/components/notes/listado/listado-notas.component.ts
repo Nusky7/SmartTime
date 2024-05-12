@@ -6,23 +6,23 @@ import { MatDialog } from '@angular/material/dialog';
 import { DetallesNotaComponent } from '../detalles/detalles-nota.component';
 import { ConfirmComponent } from '../confirm/confirm.component';
 
+
 @Component({
   selector: 'app-listado-notas',
   templateUrl: './listado-notas.component.html',
   styleUrls: ['./listado-notas.component.scss']
 })
+
 export class ListadoNotasComponent implements OnInit {
+  
   @Input() notas: any[] = [];
   @ViewChild('notasList') notasList!: MatSelectionList;
-
   cambiosNoGuardados: boolean = false;
   nota = false;
 
-  constructor(private notasService: NotesService, 
-    private userService: UserService,
+  constructor(private notasService: NotesService, private userService: UserService, 
     public dialog: MatDialog) { }
     
-
   ngOnInit(): void {
     this.mostrar();
     this.notasService.notaAgredada$.subscribe(() =>{
@@ -30,13 +30,14 @@ export class ListadoNotasComponent implements OnInit {
     });
   }
 
+
   public abrirNota(nota: any): void {
     const dialogRef = this.dialog.open(DetallesNotaComponent, {
       width: '300px',
       data: { nota: nota },
     });
     dialogRef.componentInstance.cambiosNoGuardados.subscribe((cambios: boolean) => {
-      this.cambiosNoGuardados = cambios;
+    this.cambiosNoGuardados = cambios;
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (!this.cambiosNoGuardados) {
@@ -48,32 +49,30 @@ export class ListadoNotasComponent implements OnInit {
   public mostrar(): void {
     const user_id = this.userService.getUser();
     if (!this.cambiosNoGuardados) {
-    if (user_id !== null) { 
-      this.notasService.consultarNotaPorId(user_id).subscribe({
-        next: (response: any) => {
-          
-          console.log(response);
-          this.notas = response.map((nota: any) => ({ ...nota, id: nota.id }));
-          this.nota = true;
-          console.log(this.notas);
-        },
-        error: (error: any) => {
-          console.error("Error al consultar las notas", error);
-        }
-      
-      });
-    }}
-  }
+      if (user_id !== null) { 
+        this.notasService.getUserNotas(user_id).subscribe({
+          next: (response: any) => {
+            console.log(response);
+            this.notas = response.map((nota: any) => ({ ...nota, id: nota.id }));
+            this.nota = true;
+            console.log(this.notas);
+          },
+          error: (error: any) => {
+            console.error("Error al consultar las notas", error);
+          }
+        });
+      }}
+    }
   
+    
   public formatoFecha(fecha: string | null): string {
     if (!fecha){return "";}
     const partesFecha = fecha.split('-'); 
-    const año = partesFecha[0];
+    const anyo = partesFecha[0];
     const mes = partesFecha[1];
     const día = partesFecha[2];
-    return `${día}/${mes}/${año}`;
+    return `${día}/${mes}/${anyo}`;
   }
-
 
   public borrarSeleccion(): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {

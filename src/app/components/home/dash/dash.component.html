@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <h1 class="txt">Bienvenid@... ¡Vamos a crear!</h1>
+  <h2 class="txt">Bienvenid@ {{nombre}}... ¡Vamos a crear!</h2>
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
@@ -13,6 +13,7 @@
             <div *ngSwitchCase="'nproject'"><app-nproject></app-nproject></div>
             <div *ngSwitchCase="'listado-notas'"><app-listado-notas></app-listado-notas></div>
             <div *ngSwitchCase="'home-calendar'"><app-home-calendar></app-home-calendar></div>
+            <div *ngSwitchCase="'editar-evento'"><app-editar-evento></app-editar-evento></div>
           </ng-container>
         </mat-card-content>
       </mat-card>

@@ -19,7 +19,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
 import { MatMenuTrigger } from '@angular/material/menu';
 import {MatStepperModule} from '@angular/material/stepper'; 
-
+import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatExpansionModule} from '@angular/material/expansion'; 
 
 
 
@@ -47,7 +49,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatToolbarModule,
     MatSlideToggleModule,
     FormsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule
     
   
   ],
@@ -71,7 +76,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSlideToggleModule,
     FormsModule,
     MatMenuTrigger,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule { }

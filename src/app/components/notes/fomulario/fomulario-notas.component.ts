@@ -1,8 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { NotesService } from 'src/app/services/notes.service';
 import { UserService } from 'src/app/services/user.service';
-import { Router, RouterModule, Routes } from '@angular/router';
+
 
 @Component({
   selector: 'app-formulario-notas',
@@ -19,7 +18,6 @@ export class FormularioNotasComponent implements OnInit {
   }
 
   public enviar() {
-    
     const user_id = this.userService.getUser();
     this.nota.user_id = user_id;
 

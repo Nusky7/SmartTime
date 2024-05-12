@@ -5,14 +5,18 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProyectosService {
 
 private apiURL = "http://localhost/API/index.php";
 
+constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) { }
 
-getProyectos(){}
+getUserProyectos(user_id: number): Observable<any> {
+  return this.http.get<any>(`${this.apiURL}/proyectos`, {params:{user_id: user_id}});
+}
+  
 
 crearProyecto(){}
 

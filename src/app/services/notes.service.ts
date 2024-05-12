@@ -17,16 +17,11 @@ private apiURL = "http://localhost/API/index.php";
 
 notaAgredada$ = this.nuevaNotaSubject.asObservable();
 
-  mostrarNuevaNota() {
-    this.nuevaNotaSubject.next();
-  }
-
-consultarNotas(): Observable<any[]> {
-  return this.http.get<any[]>(`${this.apiURL}/notas`);
+mostrarNuevaNota() {
+  this.nuevaNotaSubject.next();
 }
 
-
-consultarNotaPorId(user_id: number): Observable<any> {
+getUserNotas(user_id: number): Observable<any> {
   return this.http.get<any>(`${this.apiURL}/notas`, {params:{user_id: user_id}});
 }
 
