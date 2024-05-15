@@ -23,6 +23,7 @@ export class DetallesNotaComponent implements OnInit {
     this.notaOriginal = { ...this.nota };
   }
 
+  
   onNoClick(): void {
     // Emitir evento de cambios no guardados
     this.cambiosNoGuardados.emit(true);

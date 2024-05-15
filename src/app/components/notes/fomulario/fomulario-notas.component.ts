@@ -17,7 +17,7 @@ export class FormularioNotasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public enviar() {
+  enviar() {
     const user_id = this.userService.getUser();
     this.nota.user_id = user_id;
 

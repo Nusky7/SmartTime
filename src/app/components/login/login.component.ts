@@ -3,7 +3,6 @@ import { Component, OnInit} from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
-// import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -18,46 +17,34 @@ export class LoginComponent implements OnInit {
   errorMsg: string = '';
   mostrarNombre: boolean = false;
 
-constructor(private userService: UserService, private router: Router,
-  // private _snackBar: MatSnackBar,
-  private dialog: MatDialog) {}
+constructor(private userService: UserService, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     if (this.userService.dentroSesion()) {
       this.router.navigate(['/home']);
     }
-    
   }
 
-validarCorreo(correo: string): boolean {
+// Validación de E-mail correcto
+private validarCorreo(correo: string): boolean {
   const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return regex.test(correo);
 }
-
-openDialog(message: string): void {
+// Abrir el diálogo para los mensajes de error o confirmación
+private openDialog(message: string): void {
   const dialogRef = this.dialog.open(LoginDialogComponent, {
     data: { message: message }
   });
-
   dialogRef.afterClosed().subscribe(result => {
     console.log('El diálogo se cerró');
   });
 }
 
-nombreRegistro() {
-  if (this.mostrarNombre) {
-    if (this.nombre && this.correo && this.contrasena) {
-      this.registrar();
-    }
-  } else {
-    console.log("Error al registrar");
-  }
-}
-
+// Método para iniciar sesión
 onSubmit(): void {
   this.userService.autenticarUsuario(this.correo, this.contrasena).subscribe({
     next: (response) => {
-      if (!this.correo || !this.contrasena || !this.validarCorreo(this.correo)) {
+      if (!this.contrasena || !this.validarCorreo(this.correo)) {
         this.openDialog("Por favor ingrese un correo electrónico válido y una contraseña");
         return;
       }
@@ -68,6 +55,7 @@ onSubmit(): void {
 
         console.log(response.usuario.id, response.usuario.nombre);
         console.log('Iniciada Sesión');
+        console.log(response);
       } else if (response.status === 'error') {
         this.openDialog(response.mensaje);
       }
@@ -79,9 +67,19 @@ onSubmit(): void {
   });
 }
 
+// Método para validar los campos en Registro y llamar a su función.
+nombreRegistro() {
+  if (this.mostrarNombre) {
+    if (this.nombre && this.correo && this.contrasena) {
+      this.registrar();
+    }
+  } else {
+    console.log("Error al registrar");
+  }
+}
 
-public registrar() {
-
+// Método para registrar un nuevo usuario
+registrar() {
   const passRegex = /^.{4,}$/;
 
   if (!this.nombre || !this.correo || !this.contrasena) {
@@ -91,7 +89,7 @@ public registrar() {
   if (this.nombre, this.correo, this.contrasena){
   this.userService.insertarUsuario(this.nombre,this.correo, this.contrasena).subscribe(
     (response) => {
-      if (!this.nombre && !this.correo || !passRegex.test(this.contrasena) || !this.validarCorreo(this.correo)) {
+      if (!this.nombre || !passRegex.test(this.contrasena) || !this.validarCorreo(this.correo)) {
         this.openDialog("Por favor, ingrese un nombre, un correo electrónico y una contraseña válidos");
         return;
       }

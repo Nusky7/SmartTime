@@ -36,6 +36,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HomeCalendarComponent } from './components/home/home-calendar/home-calendar.component';
+import { ContentComponent } from './components/projects/content/content.component';
+import { ProyectosComponent } from './components/projects/proyectos/proyectos.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { HomeCalendarComponent } from './components/home/home-calendar/home-cale
     EditarEventoComponent,
     DashComponent,
     HomeCalendarComponent,
+    ContentComponent,
+    ProyectosComponent,
     
   ],
   imports: [

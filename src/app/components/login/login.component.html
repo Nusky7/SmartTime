@@ -4,26 +4,24 @@
     <form action="" #form="ngForm" style="display:grid;" (submit)="onSubmit()">
 
       <mat-form-field class="input" appearance="fill" *ngIf="mostrarNombre">
-        <input matInput type="text" placeholder="Nombre" name="nombre"
-         [(ngModel)]="nombre" required>
+        <input matInput type="text" placeholder="Nombre" name="nombre" [(ngModel)]="nombre" required>
       </mat-form-field>
 
       <mat-form-field class="input" appearance="fill">
-        <input matInput type="email" placeholder="E-mail" name="correo"
-         [(ngModel)]="correo" required>
+        <input matInput type="email" placeholder="E-mail" name="correo" [(ngModel)]="correo" required>
       </mat-form-field>
       <mat-form-field class="input" appearance="fill">
-        <input matInput type="password" placeholder="Contraseña" name="contrasena"
-        [(ngModel)]="contrasena" required>
+        <input matInput type="password" placeholder="Contraseña" name="contrasena" [(ngModel)]="contrasena" required>
       </mat-form-field>
      
         <button mat-raised-button color="primary" type="submit" >Acceder</button>
         <button mat-raised-button color="primary" type="button" 
         (click)="mostrarNombre ? registrar() : mostrarNombre = true">Registrarse</button>
         
-   
+        <!-- <footer style="margin: 2% 0 0 10%;  color:rgb(151, 151, 151);">
+          Datos de prueba: email@email.com / pass: 1234
+        </footer> -->
     </form>
   </mat-card>
-  <!-- <footer style="margin-left: 12%;">Datos de prueba: email@email.com / 1234</footer> -->
 </div>
 

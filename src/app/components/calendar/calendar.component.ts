@@ -41,7 +41,7 @@ export class CalendarComponent implements OnInit  {
 }
 
 
-  public getEventos(): any {
+  getEventos(): any {
     const user_id = this.userService.getUser();
     if (user_id !== null) {
     this.eventService.consultarEventoPorId(user_id).subscribe((data) => {
@@ -51,7 +51,7 @@ export class CalendarComponent implements OnInit  {
       
   }}
 
-  public abrirDialogo(): void {
+  abrirDialogo(): void {
     const dialogRef = this.dialog.open(DialogoComponent, {
       width: '25vw', height: '55vh',
       panelClass: 'dialogoCalendar',
@@ -69,12 +69,12 @@ export class CalendarComponent implements OnInit  {
     });
   }
 
-  public fechasSeleccionadas(fechas: Date[]): void {
+  fechasSeleccionadas(fechas: Date[]): void {
     this.fechaInicio = fechas[0];
     this.fechaFin = fechas[1];
   }
 
-  public formatoFecha(fecha: string | null): string {
+  formatoFecha(fecha: string | null): string {
     if (!fecha) {
       return "";
     }
@@ -87,7 +87,7 @@ export class CalendarComponent implements OnInit  {
     return `${dia}/${mes}/${anyo} a las ${hora}:${minuto}h`;
   }
   
-  public fechaSelect(date: Date) {
+  fechaSelect(date: Date) {
    console.log('Seleccionaste la fecha:', date);
    this.selectedDate = date;
   //  this.selectedDate = this.getEventos();

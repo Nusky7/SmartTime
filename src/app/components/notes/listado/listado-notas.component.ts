@@ -31,7 +31,7 @@ export class ListadoNotasComponent implements OnInit {
   }
 
 
-  public abrirNota(nota: any): void {
+  abrirNota(nota: any): void {
     const dialogRef = this.dialog.open(DetallesNotaComponent, {
       width: '300px',
       data: { nota: nota },
@@ -46,7 +46,7 @@ export class ListadoNotasComponent implements OnInit {
     });
   }
 
-  public mostrar(): void {
+  mostrar(): void {
     const user_id = this.userService.getUser();
     if (!this.cambiosNoGuardados) {
       if (user_id !== null) { 
@@ -65,7 +65,7 @@ export class ListadoNotasComponent implements OnInit {
     }
   
     
-  public formatoFecha(fecha: string | null): string {
+  formatoFecha(fecha: string | null): string {
     if (!fecha){return "";}
     const partesFecha = fecha.split('-'); 
     const anyo = partesFecha[0];
@@ -74,7 +74,7 @@ export class ListadoNotasComponent implements OnInit {
     return `${día}/${mes}/${anyo}`;
   }
 
-  public borrarSeleccion(): void {
+  borrarSeleccion(): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '350px'
     });

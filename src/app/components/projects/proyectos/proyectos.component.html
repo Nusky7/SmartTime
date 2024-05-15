@@ -1,0 +1,42 @@
+<!-- <mat-divider></mat-divider>
+<mat-card *ngFor="let proyecto of proyectos" >
+    <p>{{ proyecto.titulo }}</p>
+    {{ proyecto.descripcion }}
+    <mat-progress-bar mode="determinate" color="ThemePalette" value="80"></mat-progress-bar>
+</mat-card>
+<mat-divider></mat-divider> -->
+
+<app-content [proyectoId]="proyectoSeleccionadoId"></app-content>
+<mat-accordion *ngFor="let proyecto of proyectos">
+    <mat-expansion-panel hideToggle >
+        <mat-expansion-panel-header style="display: flex;">
+            <mat-panel-title  (click)="proyectoSeleccionado.emit(proyecto.id)" 
+                onkeydown="proyectoSeleccionado.emit(proyecto.id)">
+                <span> {{proyecto.titulo }} </span>     
+            </mat-panel-title>
+        </mat-expansion-panel-header >
+        <p style="margin-top: -2%;">
+            <mat-progress-bar mode="determinate" color="ThemePalette" value="80"></mat-progress-bar></p>
+        <mat-panel-description>
+            <span > {{ proyecto.descripcion }} </span> 
+        </mat-panel-description>
+        
+        <p>Fin del proyecto: {{ formatoFecha(proyecto.fechaVencimiento) }}</p>
+    </mat-expansion-panel>
+
+    <!-- <mat-expansion-panel [expanded]="panelOpenState"
+        (opened)="panelOpenState = true" (closed)="panelOpenState = false" >
+
+    <mat-expansion-panel-header>
+        <mat-panel-description>
+            <br>
+            <ng-container *ngIf="panelOpenState; else progressBar">
+                Fin del proyecto:
+                {{ formatoFecha(proyecto.fechaVencimiento) }}
+            </ng-container>
+            <ng-template #progressBar>
+                <mat-progress-bar mode="determinate" color="ThemePalette" value="80"></mat-progress-bar>
+            </ng-template>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    </mat-expansion-panel> -->
