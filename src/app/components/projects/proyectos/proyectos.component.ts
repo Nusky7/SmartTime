@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { UserService } from 'src/app/services/user.service';
+import { MatExpansionPanel } from '@angular/material/expansion';
+
 
 @Component({
   selector: 'app-proyectos',
@@ -14,6 +16,7 @@ export class ProyectosComponent implements OnInit {
   proyectos: any[] = [];
   panelOpenState: boolean = false;
   proyectoSeleccionadoId: number | null = null;
+  openedPanel: MatExpansionPanel | null = null;
 
 
   constructor(private proyectosService: ProyectosService, private userService: UserService
@@ -28,6 +31,14 @@ export class ProyectosComponent implements OnInit {
     });
   }
 }
+
+  clicked(){
+    if (this.panelOpenState === true){
+    this.panelOpenState;
+  }else{
+    this.panelOpenState = false;
+  }
+}   
 
   formatoFecha(fecha: string | null): string {
     if (!fecha) {

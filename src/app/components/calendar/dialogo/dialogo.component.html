@@ -1,4 +1,4 @@
-<!-- <div> -->
+
 <div mat-dialog-content class="container">
   <form [formGroup]="eventoForm">
     <mat-stepper orientation="vertical" formArrayName="formArray" [linear]="isLinear" #stepper>
@@ -9,7 +9,7 @@
           <input matInput placeholder="Título del Evento" formControlName="titulo" required>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext color="accent" type="button">Hecho</button>
+          <button mat-button matStepperNext color="primary" type="button">Hecho</button>
         </div>
       </mat-step>
 
@@ -21,7 +21,7 @@
             </mat-form-field>
           <div>
             <button mat-button matStepperPrevious type="button">Atrás</button>
-            <button mat-button matStepperNext color="accent" type="button">Hecho</button>
+            <button mat-button matStepperNext color="primary" type="button">Hecho</button>
           </div>
       </mat-step>
       
@@ -37,16 +37,6 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-date-range-picker #picker></mat-date-range-picker>
           
-          <!-- <mat-form-field>
-            <input matInput [matTimepicker]="picker" formControlName="horaInicio">
-            <mat-timepicker-toggle matSuffix [for]="picker"></mat-timepicker-toggle>
-            <mat-timepicker #picker></mat-timepicker>
-          </mat-form-field>
-          
-          <div>
-            <button mat-button matStepperPrevious type="button">Back</button>
-          </div>
-       -->
           <mat-error *ngIf="thirdFormGroup.controls.fechaInicio.hasError('matStartDateInvalid')">Invalid start date</mat-error>
           <mat-error *ngIf="thirdFormGroup.controls.fechaFin.hasError('matEndDateInvalid')">Invalid end date</mat-error>
         </mat-form-field>
@@ -64,4 +54,3 @@
     
   </div>
 </div>
-<!-- </div> -->

@@ -8,10 +8,11 @@
               <input matInput placeholder="Título" formControlName="firstCtrl" required>
             </mat-form-field>
             <div>
-              <button mat-button color="accent" matStepperNext>Hecho</button>
+              <button mat-button color="primary" matStepperNext>Hecho</button>
             </div>
           </form>
         </mat-step>
+
         <mat-step [stepControl]="secondFormGroup">
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Descripción del proyecto</ng-template>
@@ -20,11 +21,11 @@
             </mat-form-field>
             <div>
               <button mat-button class="txt" matStepperPrevious>Atrás</button>
-              <button mat-button color="accent" matStepperNext>Hecho</button>
-              <!-- <button mat-button color="warn" (click)="stepper.reset()">Reset</button> -->
+              <button mat-button color="primary" matStepperNext>Hecho</button>
             </div>
           </form>
         </mat-step>
+        
         <mat-step>
           <ng-template matStepLabel>Hecho</ng-template>
           <h4  class="txt"> Proyecto creado.</h4>
@@ -34,8 +35,6 @@
             <!-- <button mat-button color="primary" (click)="cerrar()">Cerrar</button> -->
             <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
           </div>
-          
         </mat-step>
-        
       </mat-horizontal-stepper>
     </div>
