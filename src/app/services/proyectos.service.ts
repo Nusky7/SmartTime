@@ -34,7 +34,9 @@ getUserTareas(project_id: number) {
   return this.http.get<any>(`${this.apiURL}/tareas?project_id=${project_id}`);
 }
 
-crearProyecto(){}
+crearProyecto(user_id: number){
+  return this.http.post<any>(`${this.apiURL}/proyectos`, {params:{user_id: user_id}});
+}
 
 editarTarea(id: number, titulo: string, descripcion: string, completado: boolean, estado: string, prioridad: number): Observable<any> {
   const body = { titulo, descripcion, estado, prioridad, boolean: completado };
