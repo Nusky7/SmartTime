@@ -1,5 +1,5 @@
-
-<app-content [proyectoId]="proyectoSeleccionadoId"></app-content>
+<mat-drawer-container  #drawer class="example-sidenav" mode="side" opened="false" (opened)="isDrawerOpen = true" (closed)="isDrawerOpen = false" class="example-container" autosize>
+<app-content *ngIf="!isDrawerOpen" [proyectoId]="proyectoSeleccionadoId" ></app-content>
 <mat-accordion *ngFor="let proyecto of proyectos">
     <mat-expansion-panel hideToggle #panel 
         (opened)="openedPanel = openedPanel === panel ? null : panel"
@@ -9,14 +9,15 @@
         <mat-panel-description  (click)="proyectoSeleccionado.emit(proyecto.id)"
             onkeydown="proyectoSeleccionado.emit(proyecto.id)" style="display: grid; padding-top: 1%;">
             <p> {{proyecto.titulo }} </p> 
-            <mat-progress-bar mode="determinate" color="ThemePalette" value="70" 
-            style="padding: 0.7%">
+            <mat-progress-bar mode="determinate" color="ThemePalette" [value]="40" style="padding: 0.7%">
 
             </mat-progress-bar>
             <mat-divider></mat-divider>
             <p></p>
         </mat-panel-description>
     </mat-expansion-panel-header >
+
+    
     
         <p style="margin-top: -2%;">
         <mat-panel-description>
