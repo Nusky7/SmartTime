@@ -1,8 +1,7 @@
-
 <div mat-dialog-content class="container">
   <form [formGroup]="eventoForm">
     <mat-stepper orientation="vertical" formArrayName="formArray" [linear]="isLinear" #stepper>
-      <mat-step formGroupName="0" [stepControl]="firstFormGroup">
+      <mat-step [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Inserta el título del evento</ng-template>
         <mat-form-field>
           <mat-label>Título</mat-label>
@@ -13,44 +12,58 @@
         </div>
       </mat-step>
 
-        <mat-step formGroupName="1" [stepControl]= "secondFormGroup">
-          <ng-template matStepLabel>Rellena los detalles del evento</ng-template>
-            <mat-form-field>
-              <mat-label>Descripcion</mat-label>
-              <textarea matInput id="txtArea" placeholder="Descripción del Evento" formControlName="descripcion" required></textarea>
-            </mat-form-field>
-          <div>
-            <button mat-button matStepperPrevious type="button">Atrás</button>
-            <button mat-button matStepperNext color="primary" type="button">Hecho</button>
-          </div>
+      <mat-step [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Rellena los detalles del evento</ng-template>
+        <mat-form-field>
+          <mat-label>Descripción</mat-label>
+          <textarea matInput id="txtArea" placeholder="Descripción del Evento" formControlName="descripcion" required></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious type="button">Atrás</button>
+          <button mat-button matStepperNext color="primary" type="button">Hecho</button>
+        </div>
       </mat-step>
-      
-      <mat-step formGroupName="2" [stepControl]="thirdFormGroup">
+
+      <mat-step [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Selecciona el rango de fechas</ng-template>
         <mat-form-field appearance="fill">
-          <ng-template matStepLabel>Selecciona el rango de fechas</ng-template>
           <mat-label>Fecha Inicio - Fecha Fin</mat-label>
-          <mat-date-range-input [formGroup]="thirdFormGroup" [rangePicker]="picker">
+          <mat-date-range-input [rangePicker]="picker">
             <input matStartDate formControlName="fechaInicio" placeholder="Fecha Inicio">
             <input matEndDate formControlName="fechaFin" placeholder="Fecha Fin">
           </mat-date-range-input>
           <mat-hint>Duración del evento</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-date-range-picker #picker></mat-date-range-picker>
-          
-          <mat-error *ngIf="thirdFormGroup.controls.fechaInicio.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-          <mat-error *ngIf="thirdFormGroup.controls.fechaFin.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+          <mat-error *ngIf="thirdFormGroup.controls.fechaInicio.hasError('matStartDateInvalid')">Fecha de inicio inválida</mat-error>
+          <mat-error *ngIf="thirdFormGroup.controls.fechaFin.hasError('matEndDateInvalid')">Fecha de fin inválida</mat-error>
         </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious  type="button">Atrás</button>
-          <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
+          <button mat-button matStepperPrevious type="button">Atrás</button>
+          <button mat-button matStepperNext color="primary" type="button">Hecho</button>
+        </div>
+      </mat-step>
+
+      <mat-step [formGroup]="fourthFormGroup">
+        <ng-template matStepLabel>Selecciona la hora de inicio y fin</ng-template>
+        <mat-form-field>
+          <mat-label>Hora de Inicio</mat-label>
+          <input matInput type="time" formControlName="horaInicio" placeholder="Hora de Inicio">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Hora de Fin</mat-label>
+          <input matInput type="time" formControlName="horaFin" placeholder="Hora de Fin">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious type="button">Atrás</button>
+          <button mat-button matStepperNext color="primary" type="button">Hecho</button>
         </div>
       </mat-step>
     </mat-stepper>
   </form>
   <div mat-dialog-actions style="justify-content:center; padding-bottom: 2%;">
     <button mat-raised-button color="accent" (click)="setEventos()" *ngIf="!data.evento">Agregar</button>
-    <button mat-raised-button color="accent" (click)="guardarCambios()" *ngIf="data.evento">Guardar cambios</button>    
+    <button mat-raised-button color="accent" (click)="guardarCambios()" *ngIf="data.evento">Guardar cambios</button>
     <button mat-button color="warn" (click)="dialogRef.close(false)">Cancelar</button>
-    
   </div>
 </div>

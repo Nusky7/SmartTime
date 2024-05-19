@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { DialogoComponent } from './dialogo/dialogo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { DateTime } from 'luxon';
 
 @Component({
   selector: 'app-calendar',
@@ -19,7 +20,9 @@ export class CalendarComponent implements OnInit  {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   fechaInicio: Date = new Date();
+  horaInicio: Date = new Date();
   fechaFin: Date = new Date();
+  horaFin: Date = new Date();
 
 
   constructor(private eventService: EventService, private userService: UserService, 
@@ -84,7 +87,7 @@ export class CalendarComponent implements OnInit  {
     const anyo = fechaDate.getFullYear();
     const hora = fechaDate.getHours().toString().padStart(2, '0');
     const minuto = fechaDate.getMinutes().toString().padStart(2, '0');
-    return `${dia}/${mes}/${anyo} a las ${hora}:${minuto}h`;
+    return `${dia}/${mes}/${anyo} | ${hora}:${minuto}h`;
   }
   
   fechaSelect(date: Date) {

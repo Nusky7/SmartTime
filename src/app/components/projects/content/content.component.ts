@@ -2,7 +2,6 @@ import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { ThemePalette } from '@angular/material/core';
 import { UserService } from '../../../services/user.service';
-import { ProyectoProgressService } from 'src/app/services/proyecto-progress.service';
 // import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface Task {
@@ -39,7 +38,7 @@ export class ContentComponent implements OnInit {
   proyectoProgress: number = 0;
 
   constructor(private proyectosService: ProyectosService, private userService: UserService,
-    private proyectoProgressService: ProyectoProgressService) { }
+) { }
 
   ngOnInit(): void {
   }
@@ -66,13 +65,7 @@ export class ContentComponent implements OnInit {
     this.proyectosService.editarTarea(task.id, task.titulo, descripcion, task.completado, estado, task.prioridad || 0).subscribe(
       (response) => {
         console.log('Tarea modificada:', response);
-        // Calcular el progreso del proyecto
-        // const proyecto = this.proyectos.find(p => p._id === this.proyectoId);
-        // if (proyecto !== undefined) {
-          // this.proyectoProgress = this.getProjectProgress(proyecto);
-          // Actualizar el progreso del proyecto en el servicio ProyectoProgressService
-          this.proyectoProgressService.setProjectProgress({ [String(this.proyectoId)]: this.proyectoProgress  });
-      // }
+       
     },
       (error) => {
         console.error('Error al modificar la tarea:', error);
@@ -80,13 +73,5 @@ export class ContentComponent implements OnInit {
     );
   }
 
-  // Agregar este método
-  // getProjectProgress(proyecto: Proyecto): number {
-  //   if (!proyecto || !proyecto.tareas || proyecto.tareas.length === 0) {
-  //     return 0;
-  //   }
-  //   const completedTasks = proyecto.tareas.filter(t => t.completado).length;
-  //   return (completedTasks / proyecto.tareas.length) * 100;
-  // }
 }
 

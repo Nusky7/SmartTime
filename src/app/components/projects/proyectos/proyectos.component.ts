@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@ang
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatExpansionPanel } from '@angular/material/expansion';
-import { ProyectoProgressService } from 'src/app/services/proyecto-progress.service';
 import { Task } from '../content/content.component';
 
 export interface Proyecto {
@@ -32,8 +31,7 @@ export class ProyectosComponent implements OnInit {
   proyectoId: number | null = null;
   proyectoProgress: any = {};
 
-  constructor(private proyectosService: ProyectosService, private userService: UserService,
-    private proyectoProgressService: ProyectoProgressService, private cdref: ChangeDetectorRef) { }
+  constructor(private proyectosService: ProyectosService, private userService: UserService, private cdref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     const userId = this.userService.getUser();
@@ -44,34 +42,9 @@ export class ProyectosComponent implements OnInit {
           progress: 0
         }));
         console.log(this.proyectos);});
-      //   // Calcular el progreso de cada proyecto
-      //   this.proyectos.forEach(proyecto => {
-      //     const progress = this.getProjectProgress(proyecto);
-      //     this.proyectoProgressService.setProjectProgress({[proyecto._id]: progress});
-      //   });
-      //   this.cdref.detectChanges();
-      // });
-    // }
-    // this.proyectoProgressService.getProyectoSeleccionado().subscribe((proyecto: any) => {
-    //   if (proyecto) {
-    //     this.proyectoSeleccionadoId = proyecto._id;
-    //     this.proyectoSelect = proyecto;
-    //   }
-    // });
-    // this.proyectoProgressService.projectProgress$.subscribe((newProgress: any) => {
-    //   this.proyectoProgress = newProgress;
-    //   this.cdref.detectChanges();
-    // });
+   
   }}
 
-  // getProjectProgress(proyecto: Proyecto): number {
-  //   if (!proyecto || !proyecto.tareas || proyecto.tareas.length === 0) {
-  //     return 0;
-  //   }
-  //   const completedTasks = proyecto.tareas.filter(t => t.completado).length;
-  //   const progress = (completedTasks / proyecto.tareas.length) * 100;
-  //   return progress;
-  // }
 
   clicked(){
     this.panelOpenState = !this.panelOpenState;

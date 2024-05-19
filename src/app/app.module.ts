@@ -38,7 +38,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { HomeCalendarComponent } from './components/home/home-calendar/home-calendar.component';
 import { ContentComponent } from './components/projects/content/content.component';
 import { ProyectosComponent } from './components/projects/proyectos/proyectos.component';
-import { CheckProgressDirective } from './check-progress.directive';
 
 
 
@@ -64,7 +63,6 @@ import { CheckProgressDirective } from './check-progress.directive';
     HomeCalendarComponent,
     ContentComponent,
     ProyectosComponent,
-    CheckProgressDirective
     
     
   ],

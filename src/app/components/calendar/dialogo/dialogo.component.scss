@@ -1,5 +1,5 @@
 .container{
-    scrollbar-width: none !important;
+    scrollbars: none !important;
     padding-bottom: 4%;
 }
 #txtArea{
@@ -14,7 +14,7 @@ button:hover {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.9) !important;
 }
 @media only screen and (max-width: 800px){
-    .dialogoCalendar{
-        min-width: 600px !important;
+    .mat-dialog-content-container{
+        width: 90% !important;
     }
 }

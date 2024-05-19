@@ -85,3 +85,53 @@ button:hover {
         min-width: 600px !important;
     }
 }
+
+@media only screen and (max-width: 800px) {
+    .calen {
+        width: 100%;
+        float: none;
+        margin-top: 0;
+    }
+
+    .boxEventos {
+        width: 100%;
+        margin-left: 0;
+        height: auto;
+    }
+
+    .events {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .addEvento {
+        // width: 50vw;
+        height: 100px !important;
+        margin-left: auto;
+        margin-top: -14% !important;
+        font-size: 1.5rem;
+    }
+
+    #b1, #b2 {
+        margin-top: -3%;
+    }
+
+    .mat-card {
+        width: 70% !important;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 10%;
+    }
+    .footer{
+        width: 90%;
+        margin-left: -3% !important;
+    }
+
+    h2 {
+        margin-left: 0;
+        font-size: 1.5rem;
+    }
+}
