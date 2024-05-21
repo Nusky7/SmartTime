@@ -3,6 +3,8 @@ import { ProyectosService } from 'src/app/services/proyectos.service';
 import { ThemePalette } from '@angular/material/core';
 import { UserService } from '../../../services/user.service';
 import { TareasService } from 'src/app/services/tareas.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
 // import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface Task {
@@ -39,7 +41,8 @@ export class ContentComponent implements OnInit {
   proyectos: Proyecto[] = [];
   proyectoProgress: number = 0;
 
-  constructor(private proyectosService: ProyectosService, private userService: UserService, private tareasService: TareasService,
+  constructor(private proyectosService: ProyectosService, private userService: UserService,
+    private tareasService: TareasService, private dialog: MatDialog
 ) { }
 
   ngOnInit(): void {
@@ -75,6 +78,24 @@ export class ContentComponent implements OnInit {
         console.error('Error al modificar la tarea:', error);
       }
     );
+  }
+
+  borrarTarea(task: Task) {
+    const dialogRef = this.dialog.open(DeleteDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.proyectosService.borrarTarea(task.id).subscribe(
+          () => {
+            console.log('Tarea eliminada:', task);
+            this.tareas = this.tareas.filter((t) => t.id !== task.id);
+          },
+          (error) => {
+            console.error('Error al eliminar la tarea:', error);
+          }
+        );
+      }
+    });
   }
 
 }

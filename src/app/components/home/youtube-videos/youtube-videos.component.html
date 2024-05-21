@@ -3,28 +3,29 @@
   <div class="video-container">
     <div *ngIf="videos.length > 0">
       <div class="video" *ngFor="let video of videos">
-        <mat-card class="videoCards">
+        <!-- <mat-card class="videoCards"> -->
         <a [href]="'https://www.youtube.com/watch?v=' + video.id" target="_blank">
           <img [src]="video.thumbnailUrl" alt="Miniatura del video">
           
           <div class="txt">
             <h3>{{ video.title }}</h3>
             <p>{{ video.description }}</p>
-            <!-- <mat-divider></mat-divider> -->
+            <mat-divider></mat-divider>
           </div>
-        
         </a>
-      </mat-card>
+      <!-- </mat-card> -->
       </div>
     </div>
     
 
     <div *ngIf="videos.length === 0">
+      <mat-spinner color="accent" class="spinner">Cargando</mat-spinner>
       <p>
-        <mat-spinner color="accent" class="spinner">Cargando</mat-spinner>
         <br>
-        No se han encontrado videos.
-        
+        No se han encontrado videos
+      </p>
+      <p>
+        La API de Youtube acepta hasta 10.000 peticiones/día
       </p>
     </div>
   </div>

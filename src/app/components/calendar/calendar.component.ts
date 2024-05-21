@@ -5,6 +5,7 @@ import { DialogoComponent } from './dialogo/dialogo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { DateTime } from 'luxon';
+import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-calendar',
@@ -31,7 +32,6 @@ export class CalendarComponent implements OnInit  {
      this.secondFormGroup = formBuilder.group({});
     }
 
-
   ngOnInit(): void {
    this.getEventos();
    console.log(this.eventos);
@@ -42,6 +42,7 @@ export class CalendarComponent implements OnInit  {
     secondCtrl: ['', Validators.required]
   });
 }
+
 
 
   getEventos(): any {
@@ -72,6 +73,8 @@ export class CalendarComponent implements OnInit  {
     });
   }
 
+
+
   fechasSeleccionadas(fechas: Date[]): void {
     this.fechaInicio = fechas[0];
     this.fechaFin = fechas[1];
@@ -84,16 +87,15 @@ export class CalendarComponent implements OnInit  {
     const fechaDate = new Date(fecha);
     const dia = fechaDate.getDate().toString().padStart(2, '0');
     const mes = (fechaDate.getMonth() + 1).toString().padStart(2, '0');
-    const anyo = fechaDate.getFullYear();
+    const anyo = fechaDate.getFullYear().toString().slice(-2);
     const hora = fechaDate.getHours().toString().padStart(2, '0');
     const minuto = fechaDate.getMinutes().toString().padStart(2, '0');
-    return `${dia}/${mes}/${anyo} | ${hora}:${minuto}h`;
+    return `${dia}/${mes}/${anyo} - ${hora}:${minuto}h`;
   }
   
   fechaSelect(date: Date) {
    console.log('Seleccionaste la fecha:', date);
    this.selectedDate = date;
-  //  this.selectedDate = this.getEventos();
    this.selectedEvents = this.eventos.filter((event: any) => {
     const eventStart = new Date(event.fechaInicio).setHours(0, 0, 0, 0);
     return eventStart === date.setHours(0, 0, 0, 0);
@@ -105,35 +107,40 @@ export class CalendarComponent implements OnInit  {
   }
 }
 
-modificarEvento(evento: any) {
-  const dialogRef = this.dialog.open(DialogoComponent, {
-    width: '25vw',
-    height: '55vh',
-    data: { evento: evento }
-  });
 
-  dialogRef.afterClosed().subscribe(result => {
-    if (result) {
-      this.eventService.modificarEvento(result).subscribe(() => {
-        this.getEventos();
-      });
-    }
-  });
-}
+  modificarEvento(evento: any) {
+    const dialogRef = this.dialog.open(DialogoComponent, {
+      width: '25vw',
+      height: '55vh',
+      data: { evento: evento }
+    });
 
-borrarEvento(evento: { id: number }) {
-  const eventId = evento.id;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.eventService.modificarEvento(result).subscribe(() => {
+          this.getEventos();
+        });
+      }
+    });
+  }
 
-  this.eventService.borrarEvento(eventId).subscribe(data => {
-  this.eventos = this.eventos.filter((e: { id: number; }) => e.id !== eventId);
-  this.selectedEvents = this.selectedEvents.filter((e: { id: number; }) => e.id !== eventId);
-  this.eventos = [...this.eventos];
-  this.selectedEvents = [...this.selectedEvents];
+  borrarEvento(evento: { id: number }) {
+    const eventId = evento.id;
+    const dialogRef = this.dialog.open(DeleteDialogComponent);
 
-  console.log(this.eventos);
-  });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.eventService.borrarEvento(eventId).subscribe(data => {
+          this.eventos = this.eventos.filter((e: { id: number; }) => e.id !== eventId);
+          this.selectedEvents = this.selectedEvents.filter((e: { id: number; }) => e.id !== eventId);
+          this.eventos = [...this.eventos];
+          this.selectedEvents = [...this.selectedEvents];
 
-}
+          console.log(this.eventos);
+        });
+      }
+    });
+  }
 
 }
   

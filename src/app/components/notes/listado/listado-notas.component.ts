@@ -3,8 +3,8 @@ import { NotesService } from 'src/app/services/notes.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatSelectionList } from '@angular/material/list';
 import { MatDialog } from '@angular/material/dialog';
-import { DetallesNotaComponent } from '../detalles/detalles-nota.component';
-import { ConfirmComponent } from '../confirm/confirm.component';
+import { DetallesNotaComponent } from '../editar-detalles/detalles-nota.component';
+import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
 
 
 @Component({
@@ -75,7 +75,7 @@ export class ListadoNotasComponent implements OnInit {
   }
 
   borrarSeleccion(): void {
-    const dialogRef = this.dialog.open(ConfirmComponent, {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '350px'
     });
   

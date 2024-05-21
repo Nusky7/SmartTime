@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  youtubeApiKey: 'AIzaSyAOgW6p98UZIddbkTSoks52Be26PIZ13HE'
+  youtubeApiKey: 'AIzaSyDaoYxLsDuRL_Ur2WlAv_tHcpOPx6zFoLo'
 };
 
 /*

@@ -6,6 +6,7 @@ import { Task } from '../content/content.component';
 import { TareasService } from 'src/app/services/tareas.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TareaDialogComponent } from '../tarea-dialog/tarea-dialog.component';
+import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
 
 export interface Proyecto {
   id: number;
@@ -99,13 +100,20 @@ export class ProyectosComponent implements OnInit {
   }
 
   borrarProyecto(id: number) {
-    if (id) {
-      this.proyectosService.borrarProyecto(id).subscribe(() => {
-        this.proyectos = this.proyectos.filter(proyecto => proyecto.id !== id);
-      });
-      console.log("proyecto eliminado");
-    } else {
-      console.log("Error al eliminar el proyecto");
-    }
+    const dialogRef = this.dialog.open(DeleteDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.proyectosService.borrarProyecto(id).subscribe(
+          () => {
+            console.log("Proyecto eliminado");
+            this.proyectos = this.proyectos.filter(proyecto => proyecto.id !== id);
+          },
+          (error) => {
+            console.error('Error al eliminar el proyecto:', error);
+          }
+        );
+      }
+    });
   }
 }

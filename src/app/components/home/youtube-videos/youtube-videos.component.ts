@@ -8,7 +8,7 @@ import { NoticiasService } from 'src/app/services/noticias.service';
 })
 export class YoutubeVideosComponent implements OnInit {
   videos: any[] = [];
-  query: string = 'organizacion y proyectos';
+  query: string = 'organización proyectos tiempo';
 
   constructor(private noticiasService: NoticiasService) { }
 

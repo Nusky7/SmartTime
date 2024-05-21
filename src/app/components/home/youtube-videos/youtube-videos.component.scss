@@ -1,6 +1,6 @@
 .video-container { 
   height: 670px; 
-  overflow-y: scroll; /* Muestra el scrollbar vertical cuando el contenido supere la altura del contenedor */
+  overflow-y: scroll;
 }
 
 .video {
@@ -13,7 +13,9 @@
   height: 115px;
   object-fit: cover;
   border-radius: 10px;
+  margin-top: 1.5%;
 }
+
 .videoCards{
 box-shadow: 0 0 3px rgba(103, 103, 103, 0.7) !important;
 border-radius: 10px;
@@ -22,9 +24,9 @@ border-radius: 10px;
 margin: 0.3% 2% 0 1.5%;
 
 }
-.videoCards:hover{
-  transform:scale(102.5%);
-}
+// .videoCards:hover{
+//   transform:scale(102.5%);
+// }
 .spinner{
   margin-left: 5%;
 }
@@ -40,16 +42,18 @@ margin: 0.3% 2% 0 1.5%;
 
 .txt p {
   margin-top: 0;
-  margin: 1% 4%;
-  font-size: 13px; 
+  margin: 2% 5%;
+  font-size: 12px; 
   text-decoration: none !important;
 }
 a{
   color: #516874;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 a:hover{
-  color: rgb(31, 31, 31);
-  text-decoration: underline;
-  text-shadow: 0 0 1px rgba(246, 199, 111, 0.801);
+  color:#9b73e0;
+  // text-decoration: underline;
+  text-shadow: 0 1px 0 rgb(0, 0, 0);
+  transform:scale(1.1);
 }

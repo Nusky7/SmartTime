@@ -18,18 +18,16 @@ import { NoticiasService } from './services/noticias.service';
 import { LoginComponent } from './components/login/login.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { FormularioNotasComponent } from './components/notes/fomulario/fomulario-notas.component';
-import { DetallesNotaComponent } from './components/notes/detalles/detalles-nota.component';
+import { DetallesNotaComponent } from './components/notes/editar-detalles/detalles-nota.component';
 import { ListadoNotasComponent } from './components/notes/listado/listado-notas.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginDialogComponent } from './components/login/login-dialog/login-dialog.component';
-import { ConfirmComponent } from './components/notes/confirm/confirm.component';
 import { ThemeComponent } from './components/theme/theme.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { DialogoComponent } from './components/calendar/dialogo/dialogo.component';
 import { NprojectComponent } from './components/home/nproject/nproject.component';
-import { EditarEventoComponent } from './components/calendar/editar-evento/editar-evento.component';
 import { DashComponent } from './components/home/dash/dash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -42,6 +40,7 @@ import { ContentComponent } from './components/projects/content/content.componen
 import { ProyectosComponent } from './components/projects/proyectos/proyectos.component';
 import { TareaDialogComponent } from './components/projects/tarea-dialog/tarea-dialog.component';
 import { YoutubeVideosComponent } from './components/home/youtube-videos/youtube-videos.component';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 
 
 
@@ -56,19 +55,18 @@ import { YoutubeVideosComponent } from './components/home/youtube-videos/youtube
     FormularioNotasComponent,
     ListadoNotasComponent,
     LoginDialogComponent,
-    ConfirmComponent,
     DetallesNotaComponent,
     CalendarComponent,
     ProjectsComponent,
     DialogoComponent,
     NprojectComponent,
-    EditarEventoComponent,
     DashComponent,
     HomeCalendarComponent,
     ContentComponent,
     ProyectosComponent,
     TareaDialogComponent,
     YoutubeVideosComponent,
+    DeleteDialogComponent,
     
     
   ],

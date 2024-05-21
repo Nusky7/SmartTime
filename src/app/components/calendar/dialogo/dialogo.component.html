@@ -48,15 +48,14 @@
         <ng-template matStepLabel>Selecciona la hora de inicio y fin</ng-template>
         <mat-form-field>
           <mat-label>Hora de Inicio</mat-label>
-          <input matInput type="time" formControlName="horaInicio" placeholder="Hora de Inicio">
+          <input matInput type="time" formControlName="horaInicio" placeholder="Hora de Inicio" value="0800">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Hora de Fin</mat-label>
-          <input matInput type="time" formControlName="horaFin" placeholder="Hora de Fin">
+          <input matInput type="time" formControlName="horaFin" value="0900" placeholder="Hora de Fin" >
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious type="button">Atrás</button>
-          <button mat-button matStepperNext color="primary" type="button">Hecho</button>
         </div>
       </mat-step>
     </mat-stepper>
