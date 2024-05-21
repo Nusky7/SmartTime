@@ -5,6 +5,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "types": ["node"],
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
@@ -19,10 +20,12 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
+    
     "lib": [
       "es2020",
       "dom"
     ],
+    
     // "strictPropertyInitialization": false
   },
   "angularCompilerOptions": {

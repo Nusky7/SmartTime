@@ -3,15 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { YoutubeResponse } from '../components/home/youtube-videos/youtube-response.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoticiasService {
-  private apiKey: string = 'AIzaSyCKC5tKoUnHmyzj1yMEk4NH0RQ6Gdx0D2w';
+  private apiKey: string | undefined = environment.youtubeApiKey;
   private apiUrl: string = 'https://www.googleapis.com/youtube/v3';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,) { 
+    console.log('API Key:', this.apiKey); 
+  }
 
   buscarVideos(query: string, maxResults: number = 10): Observable<any> {
     const params: any = {
