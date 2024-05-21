@@ -2,10 +2,12 @@ import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { ThemePalette } from '@angular/material/core';
 import { UserService } from '../../../services/user.service';
+import { TareasService } from 'src/app/services/tareas.service';
 // import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface Task {
   id: number;
+  proyectoId: number;
   titulo: string;
   descripcion: number | null;
   completado: boolean;
@@ -37,7 +39,7 @@ export class ContentComponent implements OnInit {
   proyectos: Proyecto[] = [];
   proyectoProgress: number = 0;
 
-  constructor(private proyectosService: ProyectosService, private userService: UserService,
+  constructor(private proyectosService: ProyectosService, private userService: UserService, private tareasService: TareasService,
 ) { }
 
   ngOnInit(): void {
@@ -65,6 +67,8 @@ export class ContentComponent implements OnInit {
     this.proyectosService.editarTarea(task.id, task.titulo, descripcion, task.completado, estado, task.prioridad || 0).subscribe(
       (response) => {
         console.log('Tarea modificada:', response);
+        const selectedTasksCount = this.tareas.filter(task => task.completado).length;
+        this.tareasService.updateSelectedTareas(task.proyectoId, selectedTasksCount);
        
     },
       (error) => {

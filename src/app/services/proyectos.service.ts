@@ -34,8 +34,13 @@ getUserTareas(project_id: number) {
   return this.http.get<any>(`${this.apiURL}/tareas?project_id=${project_id}`);
 }
 
-crearProyecto(user_id: number){
-  return this.http.post<any>(`${this.apiURL}/proyectos`, {params:{user_id: user_id}});
+crearProyecto(titulo: string, descripcion: string, user_id: number, fechaFin: string, fechaInicio: string): Observable<any> {
+  const body = { titulo, descripcion, user_id, fechaFin, fechaInicio };
+  return this.http.post<any>(`${this.apiURL}/proyectos`, body);
+}
+
+borrarProyecto(id: number): Observable<any> {
+  return this.http.delete(`${this.apiURL}/proyectos/${id}`);
 }
 
 editarTarea(id: number, titulo: string, descripcion: string, completado: boolean, estado: string, prioridad: number): Observable<any> {
@@ -44,11 +49,15 @@ editarTarea(id: number, titulo: string, descripcion: string, completado: boolean
   return this.http.put(`${this.apiURL}/tareas/${id}`, body);
 }
 
+crearTarea(tarea: any): Observable<any> {
+  const url = `${this.apiURL}/tareas`;
+  return this.http.post(url, tarea);
+}
 
-borrarProyecto(){}
 
-
-
+borrarTarea(id: number): Observable<any> {
+  return this.http.delete(`${this.apiURL}/tareas/${id}`);
+}
 
 
 

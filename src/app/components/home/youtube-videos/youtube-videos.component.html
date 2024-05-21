@@ -1,0 +1,31 @@
+
+<mat-card-content class="container">
+  <div class="video-container">
+    <div *ngIf="videos.length > 0">
+      <div class="video" *ngFor="let video of videos">
+        <mat-card class="videoCards">
+        <a [href]="'https://www.youtube.com/watch?v=' + video.id" target="_blank">
+          <img [src]="video.thumbnailUrl" alt="Miniatura del video">
+          
+          <div class="txt">
+            <h3>{{ video.title }}</h3>
+            <p>{{ video.description }}</p>
+            <!-- <mat-divider></mat-divider> -->
+          </div>
+        
+        </a>
+      </mat-card>
+      </div>
+    </div>
+    
+
+    <div *ngIf="videos.length === 0">
+      <p>
+        <mat-spinner color="accent" class="spinner">Cargando</mat-spinner>
+        <br>
+        No se han encontrado videos.
+        
+      </p>
+    </div>
+  </div>
+</mat-card-content>

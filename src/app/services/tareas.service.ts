@@ -5,12 +5,20 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class TareasService {
-  private selectedTareas = new BehaviorSubject<number>(0);
-  selectedTasks$ = this.selectedTareas.asObservable();
+  private selectedTareasMap = new Map<number, BehaviorSubject<number>>();
 
   constructor() { }
 
-  updateSelectedTareas(count: number) {
-    this.selectedTareas.next(count);
+  updateSelectedTareas(projectId: number, count: number) {
+    let projectSubject = this.selectedTareasMap.get(projectId);
+    if (!projectSubject) {
+      projectSubject = new BehaviorSubject<number>(0);
+      this.selectedTareasMap.set(projectId, projectSubject);
+    }
+    projectSubject.next(count);
+  }
+
+  getSelectedTareas$(projectId: number) {
+    return this.selectedTareasMap.get(projectId) || new BehaviorSubject<number>(0);
   }
 }

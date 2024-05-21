@@ -1,0 +1,55 @@
+.video-container { 
+  height: 670px; 
+  overflow-y: scroll; /* Muestra el scrollbar vertical cuando el contenido supere la altura del contenedor */
+}
+
+.video {
+  display: grid;
+  margin-bottom: 1.2%;
+}
+
+.video img {
+  width: 200px;
+  height: 115px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.videoCards{
+box-shadow: 0 0 3px rgba(103, 103, 103, 0.7) !important;
+border-radius: 10px;
+// margin-left: 1.5%;
+// margin-right: 2%;
+margin: 0.3% 2% 0 1.5%;
+
+}
+.videoCards:hover{
+  transform:scale(102.5%);
+}
+.spinner{
+  margin-left: 5%;
+}
+
+.txt {
+  margin-left: 10px;
+}
+
+.txt h3 {
+  margin-bottom: 0.25rem;
+  font-size: 16px;
+}
+
+.txt p {
+  margin-top: 0;
+  margin: 1% 4%;
+  font-size: 13px; 
+  text-decoration: none !important;
+}
+a{
+  color: #516874;
+  text-decoration: none;
+}
+a:hover{
+  color: rgb(31, 31, 31);
+  text-decoration: underline;
+  text-shadow: 0 0 1px rgba(246, 199, 111, 0.801);
+}

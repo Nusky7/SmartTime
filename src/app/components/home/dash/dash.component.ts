@@ -29,17 +29,15 @@ export class DashComponent {
   getCards() {
     if (this.isHandset) {
       return [
-        { title: 'Crear Nuevo Proyecto', cols: 2, rows: 1, component: 'nproject' },
-        { title: 'Editar Evento', cols: 2, rows: 1, component: 'editar-evento' },
+        { cols: 2, rows: 1, component: 'nproject' },
         { cols: 2, rows: 1, component: 'home-calendar'},
-        { title: 'Listado de Notas', cols: 2, rows: 1, component: 'listado-notas' }
+        { title: 'Video Tutoriales', cols: 2, rows: 2, component: 'youtube-videos' },
       ];
     } else {
       return [
         { title: 'Crear Nuevo Proyecto', cols: 2, rows: 1, component: 'nproject' },
-        { title: 'Editar Evento', cols: 1, rows: 1, component: 'editar-evento' },
-        { title: 'calendario', cols: 1, rows: 2, component: 'home-calendar' },
-        { title: 'Listado de Notas', cols: 1, rows: 1, component: 'listado-notas' }
+        { title: 'Video Tutoriales', cols: 1, rows: 2, component: 'youtube-videos' },
+        { cols: 1, rows: 2, component: 'home-calendar' },
       ];
     }
   }

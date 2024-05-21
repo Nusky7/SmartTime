@@ -5,19 +5,22 @@
     margin-top: 10%;
     margin-left: 25%;
     opacity: 1;
-    
     border-radius: 10px;
   }
 
   #note{
     // width: 100vh; 
     height: 20vh;
-}
-button:hover{
+  }
+
+  button:hover{
   opacity: 0.89;
   transform: translateY(2px);
   box-shadow: 0 2px 6px rgba(83, 83, 83, 0.89) !important;
-}
+  }
+  .txt{
+    text-align: left;
+  }
 
   .container {
     padding: 0.1% 20% 20% 20%;

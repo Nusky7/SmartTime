@@ -13,3 +13,30 @@ textarea {
     // width: 30vw;
     height: 10vh;
 }
+
+@media only screen and (max-width: 800px) {
+    input, textarea {
+      width: 100%;
+    }
+    mat-step-header{
+        height: 80%;
+        font-size: 10px;
+    }
+    .newProContainer {
+        margin-top: -10% !important;
+    }
+    button {
+        width: 1vw;
+      }
+      .stepper {
+        font-size: 12px;
+        transform: scale(0.89); // reducir el tamaño del componente en un 10%
+        transform-origin: top left; 
+      }
+      .stepper mat-button {
+        padding: 0 8px;
+        margin-bottom: 30px !important;
+      }
+
+    
+}

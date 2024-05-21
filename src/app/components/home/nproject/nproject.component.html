@@ -1,9 +1,8 @@
 <div class="newProContainer">
-    <!-- <button mat-raised-button color="accent" (click)="abrirSteps()">Crear proyecto</button> -->
-    <mat-horizontal-stepper headerPosition="top" *ngIf="!stepper" [linear]="isLinear" #stepper>
+    <mat-stepper headerPosition="top" *ngIf="!stepper" [linear]="!isLinear" [orientation]="stepperOrientation" #stepper class="stepper">
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Nombra el Proyecto</ng-template>
+            <ng-template matStepLabel>Crea un Proyecto</ng-template>
             <mat-form-field>
               <input matInput placeholder="Título" formControlName="firstCtrl" required>
             </mat-form-field>
@@ -21,9 +20,30 @@
             </mat-form-field>
             <div>
               <button mat-button class="txt" matStepperPrevious>Atrás</button>
-              <button mat-button color="primary" matStepperNext>Hecho</button>
+              <button mat-button color="primary" matStepperNext  >Hecho</button>
             </div>
           </form>
+        </mat-step>
+
+
+        <mat-step [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Selecciona el rango de fechas</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Fecha Inicio - Fecha Fin</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="fechaInicio" placeholder="Fecha Inicio">
+              <input matEndDate formControlName="fechaFin" placeholder="Fecha Fin">
+            </mat-date-range-input>
+            <mat-hint>Duración del proyecto</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+            <mat-error *ngIf="thirdFormGroup.controls.fechaInicio.hasError('matStartDateInvalid')">Fecha de inicio inválida</mat-error>
+            <mat-error *ngIf="thirdFormGroup.controls.fechaFin.hasError('matEndDateInvalid')">Fecha de fin inválida</mat-error>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious type="button">Atrás</button>
+            <button mat-raised-button matStepperNext color="primary" type="button" (click)="submit()">Crear</button>
+          </div>
         </mat-step>
         
         <mat-step>
@@ -36,5 +56,5 @@
             <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
           </div>
         </mat-step>
-      </mat-horizontal-stepper>
+      </mat-stepper>
     </div>

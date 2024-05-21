@@ -6,28 +6,37 @@
         [expanded]="openedPanel === panel">
 
     <mat-expansion-panel-header style="height: 9vh; margin-bottom: 0.5%;">
-        <mat-panel-description  (click)="proyectoSeleccionado.emit(proyecto.id)"
+        <mat-panel-description  (click)="proyectoSeleccionado.emit(proyecto.id);" 
             onkeydown="proyectoSeleccionado.emit(proyecto.id)" style="display: grid; padding-top: 1%;">
-            <p> {{proyecto.titulo }} </p> 
-            <mat-progress-bar mode="determinate" color="ThemePalette" [value]="40" style="padding: 0.7%">
+            <p class="txt" style="text-shadow: 0 0 0.5px black;"> 
+
+                {{proyecto.titulo }}  
+            </p>
+            <mat-progress-bar mode="determinate" color="ThemePalette" [value]="proyectoProgress" style="padding: 0.7%">
 
             </mat-progress-bar>
             <mat-divider></mat-divider>
             <p></p>
         </mat-panel-description>
+        
     </mat-expansion-panel-header >
-
-    
     
         <p style="margin-top: -2%;">
         <mat-panel-description>
             <span > {{ proyecto.descripcion }} </span> 
         </mat-panel-description>
+        <div>
+            <button mat-button color="warn" (click)="borrarProyecto(proyecto.id)">
+                Eliminar
+            </button>
+        </div>
         <div style="display: flex;">
         <p>Fin del proyecto: {{ formatoFecha(proyecto.fechaVencimiento) }} </p>
-            <button type="button" mat-mini-fab 
-                style="margin-left: auto; margin-top: 1%;  font-size:2em; ">
-                <div style="margin-bottom: 3% !important;">+</div> 
+            <button type="button" mat-mini-fab (click)="openTareaDialog(proyecto.id)"
+                style="margin-left: auto; margin-top: 1%;   font-size:2em; ">
+                <div style="margin-bottom: 3% !important;" >+</div> 
             </button>
-        </div>        
+            
+        </div>      
     </mat-expansion-panel>
+    

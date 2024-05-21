@@ -22,6 +22,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 import {MatExpansionModule} from '@angular/material/expansion'; 
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -80,7 +81,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatStepperModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule,
+    
   ]
 })
 export class MaterialModule { }

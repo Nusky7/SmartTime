@@ -11,6 +11,8 @@ import { NotesService } from './services/notes.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { TareasService } from './services/tareas.service';
+import { NoticiasService } from './services/noticias.service';
 
 // Componentes
 import { LoginComponent } from './components/login/login.component';
@@ -38,6 +40,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { HomeCalendarComponent } from './components/home/home-calendar/home-calendar.component';
 import { ContentComponent } from './components/projects/content/content.component';
 import { ProyectosComponent } from './components/projects/proyectos/proyectos.component';
+import { TareaDialogComponent } from './components/projects/tarea-dialog/tarea-dialog.component';
+import { YoutubeVideosComponent } from './components/home/youtube-videos/youtube-videos.component';
 
 
 
@@ -63,6 +67,8 @@ import { ProyectosComponent } from './components/projects/proyectos/proyectos.co
     HomeCalendarComponent,
     ContentComponent,
     ProyectosComponent,
+    TareaDialogComponent,
+    YoutubeVideosComponent,
     
     
   ],
@@ -86,7 +92,11 @@ import { ProyectosComponent } from './components/projects/proyectos/proyectos.co
   ],
   providers: [
     UserService,
-    NotesService
+    NotesService,
+    TareasService,
+    NoticiasService,
+    
+
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
 .grid-container {
-  margin: 20px;
+  margin: 10px;
 }
 
 .dashboard-card {
@@ -8,8 +8,11 @@
   left: 15px;
   right: 15px;
   bottom: 15px;
-  border-radius: 1vw;
+  border-radius: 10px;
   box-shadow: 0px 1.5px 6px rgba(110, 110, 110, 0.748) !important;
+}
+.title{
+  text-align: center !important;
 }
 
 .more-button {
@@ -24,4 +27,9 @@
 .txt{
   text-align: center;
   margin-bottom: -0.1%;
+}
+@media only screen and (max-width: 800px){ 
+  .project .grid-container {
+  padding-bottom: 20% !important;
+}
 }
