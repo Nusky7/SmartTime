@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { ThemePalette } from '@angular/material/core';
 import { UserService } from '../../../services/user.service';
 import { TareasService } from 'src/app/services/tareas.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
-// import { BehaviorSubject, Observable } from 'rxjs';
+
 
 export interface Task {
   id: number;
@@ -34,39 +34,60 @@ export interface Proyecto {
 })
 export class ContentComponent implements OnInit {
 
+  @Input() proyectosTareas: any[] = [];
   @Input() proyectoId: number | null = null;
-  @Output() projectProgressChange = new EventEmitter<number>();
   tareas: Task[] = [];
-  items: Task[] = [];
   proyectos: Proyecto[] = [];
-  proyectoProgress: number = 0;
+  panelOpenState = false;
 
   constructor(private proyectosService: ProyectosService, private userService: UserService,
-    private tareasService: TareasService, private dialog: MatDialog
-) { }
+    private tareasService: TareasService, private dialog: MatDialog, private cdref: ChangeDetectorRef,
+  ) {}
 
-  ngOnInit(): void {
+   ngOnInit(): void {
+    const userId = this.userService.getUser();
+    if (userId) {
+      this.proyectosService.getUserProyectos(userId).subscribe((data: any[]) => {
+        this.proyectos = data.map((proyecto: any) => ({
+          ...proyecto,
+        }));
+      }); 
+    }
+    this.tareasService.tareaAgregada$.subscribe(() => {
+      this.actualizarTareas();
+    });
   }
-
-  panelOpenState = false;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['proyectoId'] && this.proyectoId) {
       this.proyectosService.getUserTareas(this.proyectoId).subscribe((data: Task[]) => {
         this.tareas = data;
-      
+        this.cdref.detectChanges();
       });
     }
   }
 
-  allComplete: boolean = false;
 
 
-  taskCompleted(task: Task) {
+  actualizarTareas(): void {
+    if (this.proyectoId) {
+      this.proyectosService.getUserTareas(this.proyectoId).subscribe((data: Task[]) => {
+        this.tareas = data;
+        this.cdref.detectChanges();
+      });
+    }
+  }
+  
+  
+  tareaCompleta(task: Task) {
     task.completado = !task.completado;
     const descripcion = task.descripcion !== null ? task.descripcion.toString() : '';
     const estado = task.estado !== null ? task.estado : '';
-
+    if (task.completado){ 
+      task.prioridad = 0;
+    } else {
+      task.prioridad = 1;
+    }
     this.proyectosService.editarTarea(task.id, task.titulo, descripcion, task.completado, estado, task.prioridad || 0).subscribe(
       (response) => {
         console.log('Tarea modificada:', response);
@@ -80,13 +101,32 @@ export class ContentComponent implements OnInit {
     );
   }
 
+
+  cambiarPrioridad(task: Task, event: Event) {
+    const newPrioridad = (event.target as HTMLSelectElement)?.value;
+    if (newPrioridad !== null) {
+      task.prioridad = parseInt(newPrioridad, 10);
+      const descripcion = task.descripcion !== null ? task.descripcion.toString() : '';
+      const estado = task.estado !== null ? task.estado : '';
+  
+      this.proyectosService.editarTarea(task.id, task.titulo, descripcion, task.completado, estado, task.prioridad || 0).subscribe(
+        (response) => {
+          console.log('Tarea modificada:', response);
+        },
+        (error) => {
+          console.error('Error al modificar la tarea:', error);
+        }
+      );
+    }
+  }
+
+
   borrarTarea(task: Task) {
     const dialogRef = this.dialog.open(DeleteDialogComponent);
-
+    
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.proyectosService.borrarTarea(task.id).subscribe(
-          () => {
+        this.proyectosService.borrarTarea(task.id).subscribe(() => {
             console.log('Tarea eliminada:', task);
             this.tareas = this.tareas.filter((t) => t.id !== task.id);
           },

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef, SimpleChanges, SimpleChange } from '@angular/core';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatExpansionPanel } from '@angular/material/expansion';
@@ -24,54 +24,42 @@ export interface Proyecto {
 })
 export class ProyectosComponent implements OnInit {
 
-  @Output() proyectoSeleccionado: EventEmitter<number> = new EventEmitter();
-
+  @Output() tareaAgregada: EventEmitter<void> = new EventEmitter();
+  @Output() proyectoSeleccionado:EventEmitter<number> = new EventEmitter();
+  proyectoSeleccionadoId: number | null = null;
   proyectos: any[] = [];
   tareas: any[] = [];
   panelOpenState: boolean = false;
-  proyectoSeleccionadoId: number | null = null;
   openedPanel: MatExpansionPanel | null = null;
-  proyectoSelect: any = null;
   isDrawerOpen = false;
-  proyectoProgress: number = 0;
-  totalTasks: number = 0;
 
-  constructor(private proyectosService: ProyectosService, private userService: UserService, private cdref: ChangeDetectorRef,
-    private tareasService: TareasService, public dialog: MatDialog
+  constructor(private proyectosService: ProyectosService, private userService: UserService, 
+    private cdref: ChangeDetectorRef, private tareasService: TareasService, public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     const userId = this.userService.getUser();
-    this.actualizarTareas();
     if (userId) {
       this.proyectosService.getUserProyectos(userId).subscribe((data: any[]) => {
         this.proyectos = data.map((proyecto: any) => ({
           ...proyecto,
-          progress: 0
         }));
       });
     }
   }
 
-  actualizarTareas() {
-    if (this.proyectoSeleccionadoId) {
-      this.proyectosService.getUserTareas(this.proyectoSeleccionadoId).subscribe((data: Task[]) => {
-        this.tareas = data;
-        this.cdref.detectChanges();
-      });
-    }
-  }
 
   clicked(){
     this.panelOpenState = !this.panelOpenState;
   }
 
-  seleccionarProyecto(proyecto_id: number | null): void {
+  seleccionarProyecto(proyecto_id: number): void {
     if (proyecto_id !== null) {
       this.proyectoSeleccionadoId = proyecto_id;
       this.proyectoSeleccionado.emit(proyecto_id);
     }
   }
+
 
   formatoFecha(fecha: string | null): string {
     if (!fecha) {
@@ -84,20 +72,19 @@ export class ProyectosComponent implements OnInit {
     return `${dia}/${mes}/${anyo}`
   }
 
+
   openTareaDialog(proyectoSeleccionadoId:any): void {
     const dialogRef = this.dialog.open(TareaDialogComponent, {
       data: { parent: this, proyecto_id: proyectoSeleccionadoId },
-
-      width: '400px'
-      
+      width: '23vw'
     });
-    
+
+  
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 'save') {
-        this.actualizarTareas();
-      }
+        this.tareasService.emitirTareaAgregada();
     });
   }
+  
 
   borrarProyecto(id: number) {
     const dialogRef = this.dialog.open(DeleteDialogComponent);

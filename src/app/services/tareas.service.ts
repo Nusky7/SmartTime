@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,13 @@ export class TareasService {
   private selectedTareasMap = new Map<number, BehaviorSubject<number>>();
 
   constructor() { }
+
+  private tareaAgregadaSource = new Subject<void>();
+  tareaAgregada$ = this.tareaAgregadaSource.asObservable();
+
+  emitirTareaAgregada() {
+    this.tareaAgregadaSource.next();
+  }
 
   updateSelectedTareas(projectId: number, count: number) {
     let projectSubject = this.selectedTareasMap.get(projectId);

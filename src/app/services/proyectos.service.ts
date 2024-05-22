@@ -54,7 +54,6 @@ crearTarea(tarea: any): Observable<any> {
   return this.http.post(url, tarea);
 }
 
-
 borrarTarea(id: number): Observable<any> {
   return this.http.delete(`${this.apiURL}/tareas/${id}`);
 }

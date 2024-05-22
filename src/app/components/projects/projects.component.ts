@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ProyectosService } from 'src/app/services/proyectos.service';
-import {ThemePalette} from '@angular/material/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-projects',
@@ -9,16 +7,19 @@ import {ThemePalette} from '@angular/material/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor(private proyectosService: ProyectosService) { }
+  constructor( private cdref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
 
-  proyectoSeleccionadoId: number | null = null;
+  proyectoSeleccionadoId: number | null = null;  
+  proyectosTareas: any[] = [];
 
-  proyectoSeleccionado(proyectoId: number) {
-    this.proyectoSeleccionadoId = proyectoId;
+    proyectoSeleccionado(proyectoId: number) {
+      this.proyectoSeleccionadoId = proyectoId;
+    }
+
   }
-  
-}
+
+
 

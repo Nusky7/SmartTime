@@ -1,8 +1,8 @@
 <app-theme></app-theme>
 <app-menu></app-menu>
 
-    <!-- Drawer izquierdo proyectos existentes -->
-    <mat-drawer-container class="drawer-container">
+  <!-- Drawer izquierdo proyectos existentes -->
+  <mat-drawer-container class="drawer-container">
     <mat-drawer mode="side" opened  [style.width.vw]="18" >
       <app-proyectos (proyectoSeleccionado)="proyectoSeleccionado($event)"></app-proyectos>
     </mat-drawer>
@@ -11,5 +11,5 @@
     <mat-drawer-content >
       <app-content  [proyectoId]="proyectoSeleccionadoId"></app-content>
     </mat-drawer-content>
-    </mat-drawer-container>
+  </mat-drawer-container>
         

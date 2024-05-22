@@ -1,14 +1,14 @@
 
 <div *ngIf="tareas.length > 0">
   
-    <div *ngFor="let tarea of tareas" style="padding-right: 2%; display: flex; align-items: center;
-      border-radius: 1vw; margin: 0.5% 0.5%; box-shadow: 1px 2px 6px rgba(67, 67, 67, 0.84)" >
+    <div *ngFor="let tarea of tareas" class="container"
+    [ngClass]="{'prioridad-1': tarea.prioridad === 1,  'border-animated': tarea.prioridad === 1, 'prioridad-2': tarea.prioridad === 2, 'prioridad-3': tarea.prioridad === 3}">
 
       <div style="margin: 0 1.5% 0 1%;">
         <mat-checkbox  class="example-margin" 
           [checked]="tarea.completado==true" 
           [color]="tarea.color"
-          (change)="taskCompleted(tarea)">
+          (change)="tareaCompleta(tarea)">
         </mat-checkbox>
       </div>
 
@@ -21,10 +21,9 @@
         </mat-panel-description>
       </div>
       
-      
       <mat-form-field appearance="fill" color="warn" style=" width: 5vw; margin: 2% 2% 0 0;">
         <mat-label>Prioridad</mat-label>
-        <select matNativeControl title="prioridad" id="prioridad">
+        <select matNativeControl title="prioridad" id="prioridad" [(ngModel)]="tarea.prioridad" (change)="cambiarPrioridad(tarea, $event)">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -33,6 +32,13 @@
       </mat-form-field>
 
       <div>
+        <!-- Botón editar
+        <button mat-mini-fab color="accent" id="b2" (click)="modificarTarea(tarea)">
+          <svg version="1.1" id="Capa_1" stroke="#000000" stroke-width="7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+           width="22" height="22" x="0px" y="0px" viewBox="0 0 383.947 383.947" style="enable-background:new 0 0 383.947 383.947;" xml:space="preserve"><g><g><g><polygon points="0,303.947 0,383.947 80,383.947 316.053,147.893 236.053,67.893 " fill="#000000" style="fill: rgb(255, 255, 255);">
+           </polygon><path  d="M377.707,56.053L327.893,6.24c-8.32-8.32-21.867-8.32-30.187,0l-39.04,39.04l80,80l39.04-39.04 C386.027,77.92,386.027,64.373,377.707,56.053z" fill="#000000" stroke="#000000" stroke-width="7" style="fill: rgb(255, 255, 255);">
+          </path></g></g></g></svg>
+        </button> -->
         <button mat-mini-fab type="button" color="warn" style=" border-radius: 10px; width: 2vw; height: 2vw;"  (click)="borrarTarea(tarea)">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0" width="44" height="44" viewBox="0 0 380 550">
             <g fill="#ffffff" fill-rule="nonzero" stroke="#000000" stroke-width="0.3" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(9.84615,9.84615)">

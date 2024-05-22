@@ -1,7 +1,7 @@
 <div class="newTareaContainer">
     <mat-vertical-stepper headerPosition="top" [linear]="false" #stepper>
       
-      <!-- Paso 1: Información Básica -->
+      <!-- Información Tarea -->
       <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Información de la Tarea</ng-template>
@@ -19,24 +19,17 @@
         </form>
       </mat-step>
       
-      <!-- Paso 2: Estado y Prioridad -->
+      <!-- Prioridad -->
       <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Estado y Prioridad</ng-template>
-          <mat-form-field>
-            <mat-label>Estado</mat-label>
-            <mat-select formControlName="estado">
-              <mat-option value="pendiente">Pendiente</mat-option>
-              <mat-option value="completado">Completado</mat-option>
-            </mat-select>
-          </mat-form-field>
+          <ng-template matStepLabel>Prioridad</ng-template>
           <mat-form-field>
             <mat-label>Prioridad</mat-label>
             <mat-select formControlName="prioridad">
               <mat-option value="0">Ninguna</mat-option>
-              <mat-option value="1">Baja</mat-option>
+              <mat-option value="3">Baja</mat-option>
               <mat-option value="2">Media</mat-option>
-              <mat-option value="3">Alta</mat-option>
+              <mat-option value="1">Alta</mat-option>
             </mat-select>
           </mat-form-field>
           <div>
@@ -46,7 +39,7 @@
         </form>
       </mat-step>
       
-      <!-- Paso 3: Fecha de Vencimiento -->
+      <!-- Fecha de Vencimiento -->
       <mat-step [stepControl]="thirdFormGroup">
         <form [formGroup]="thirdFormGroup">
           <ng-template matStepLabel>Fecha de Vencimiento</ng-template>
@@ -58,7 +51,7 @@
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Atrás</button>
-            <button mat-raised-button color="primary" matStepperNext (click)="onSave(parent)">Guardar</button>
+            <button mat-raised-button color="primary" matStepperNext (click)="crearTarea()">Guardar</button>
           </div>
         </form>
       </mat-step>

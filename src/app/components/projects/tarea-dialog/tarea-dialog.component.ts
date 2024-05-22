@@ -1,8 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProyectosComponent } from '../proyectos/proyectos.component';
 import { ProyectosService } from '../../../services/proyectos.service';
+// import { Task } from '../content/content.component';
+// import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-tarea-dialog',
@@ -16,13 +18,18 @@ export class TareaDialogComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   proyecto_id: number;
+  
+  
+  @Output() tareaAgregada: EventEmitter<void> = new EventEmitter();
 
+  // tarea: Task;
 
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<TareaDialogComponent>, 
     @Inject(MAT_DIALOG_DATA) data: { parent: ProyectosComponent, proyecto_id: number },  private proyectosService: ProyectosService
   ) {
+    // this.tarea = { ...data.tarea };
     this.parent = data.parent;
     this.proyecto_id = data.proyecto_id;
     this.firstFormGroup = this._formBuilder.group({
@@ -47,32 +54,25 @@ export class TareaDialogComponent implements OnInit {
   }
 
   crearTarea(): void {
-
-    const tareaData = {
-      ...this.firstFormGroup.value,
-      ...this.secondFormGroup.value,
-      ...this.thirdFormGroup.value,
-      completado: false,
-      proyecto_id: this.proyecto_id
-    };
-    console.log(tareaData.proyecto_id);
-    this.proyectosService.crearTarea(tareaData).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.dialogRef.close(response);
-      },
-      error: (error) => {
-        console.error(error);
-      }
-    });
-  }
-  
-  
-  onSave(parent: ProyectosComponent): void {
     if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid) {
-      this.crearTarea();
-      parent.actualizarTareas();
+      const tareaData = {
+        ...this.firstFormGroup.value,
+        ...this.secondFormGroup.value,
+        ...this.thirdFormGroup.value,
+        completado: false,
+        proyecto_id: this.proyecto_id
+      };
+      this.proyectosService.crearTarea(tareaData).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.dialogRef.close(response);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
     }
   }
+
   
 }
