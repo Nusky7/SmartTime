@@ -4,7 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { DialogoComponent } from './dialogo/dialogo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { DateTime } from 'luxon';
+// import { DateTime } from 'luxon';
 import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
 
 @Component({
@@ -32,16 +32,16 @@ export class CalendarComponent implements OnInit  {
      this.secondFormGroup = formBuilder.group({});
     }
 
-  ngOnInit(): void {
-   this.getEventos();
-   console.log(this.eventos);
-   this.firstFormGroup = this.formBuilder.group({
-    firstCtrl: ['', Validators.required]
-  });
-  this.secondFormGroup = this.formBuilder.group({
-    secondCtrl: ['', Validators.required]
-  });
-}
+    ngOnInit(): void {
+    this.getEventos();
+    console.log(this.eventos);
+    this.firstFormGroup = this.formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+  }
 
 
 
@@ -109,23 +109,30 @@ export class CalendarComponent implements OnInit  {
   }
   
 
-
   modificarEvento(evento: any) {
     const dialogRef = this.dialog.open(DialogoComponent, {
       width: '25vw',
       height: '55vh',
       data: { evento: evento }
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.eventService.modificarEvento(result).subscribe(() => {
-          this.getEventos();
+          const eventIndex = this.eventos.findIndex((e: { id: number }) => e.id === evento.id);
+          if (eventIndex !== -1) {
+            this.eventos[eventIndex] = result;
+          }
+          const selectedEventIndex = this.selectedEvents.findIndex((e: { id: number }) => e.id === evento.id);
+          if (selectedEventIndex !== -1) {
+            this.selectedEvents[selectedEventIndex] = result;
+          }
+          this.fechaSelect(this.selectedDate);
         });
       }
     });
   }
-
+  
   borrarEvento(evento: { id: number }) {
     const eventId = evento.id;
     const dialogRef = this.dialog.open(DeleteDialogComponent);
