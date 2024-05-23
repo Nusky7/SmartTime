@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, Optional, Self, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder,  Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class DialogoComponent implements OnInit {
 
   @Output() agregarEvento = new EventEmitter<any>();
+  @Output() modificarEvento = new EventEmitter<any>();
 
   firstFormGroup = this.formBuilder.group({
     titulo: ['', Validators.required],
@@ -48,8 +49,14 @@ export class DialogoComponent implements OnInit {
     if (data.evento) {
       this.firstFormGroup.patchValue({ titulo: data.evento.titulo });
       this.secondFormGroup.patchValue({ descripcion: data.evento.descripcion });
-      this.thirdFormGroup.patchValue({ fechaInicio: data.evento.fechaInicio, fechaFin: data.evento.fechaFin });
-      this.fourthFormGroup.patchValue({ horaInicio: data.evento.horaInicio, horaFin: data.evento.horaFin });
+      this.thirdFormGroup.patchValue({
+        fechaInicio: data.evento.fechaInicio.split('T')[0],
+        fechaFin: data.evento.fechaFin.split('T')[0]
+      });
+      this.fourthFormGroup.patchValue({
+        horaInicio: data.evento.horaInicio,
+        horaFin: data.evento.horaFin
+      });
     }
   }
 
@@ -59,17 +66,34 @@ export class DialogoComponent implements OnInit {
     const user_id = this.userService.getUser();
     const titulo = this.firstFormGroup.value.titulo;
     const descripcion = this.secondFormGroup.value.descripcion;
-    const fechaInicio = this.thirdFormGroup.value.fechaInicio;
-    const fechaFin = this.thirdFormGroup.value.fechaFin;
-    const horaInicio = this.fourthFormGroup.value.horaInicio;
-    const horaFin = this.fourthFormGroup.value.horaFin;
-    const event = { user_id, titulo, descripcion, fechaInicio, fechaFin, horaInicio, horaFin };
+    const fechaInicio = new Date(this.thirdFormGroup.value.fechaInicio || '');
+    const fechaFin = new Date(this.thirdFormGroup.value.fechaFin || '');
+    const horaInicio = this.fourthFormGroup.value.horaInicio || '00:00' ;
+    const horaFin = this.fourthFormGroup.value.horaFin || '00:00';
+
+    const [horaInicioHoras, horaInicioMinutos] = horaInicio.split(':').map(Number);
+    const [horaFinHoras, horaFinMinutos] = horaFin.split(':').map(Number);
+
+    fechaInicio.setHours(horaInicioHoras, horaInicioMinutos);
+    fechaFin.setHours(horaFinHoras, horaFinMinutos);
+
+    const event = {
+      user_id,
+      titulo,
+      descripcion,
+      fechaInicio: fechaInicio.toISOString(),
+      fechaFin: fechaFin.toISOString(),
+      horaInicio,
+      horaFin
+    };
 
     this.eventService.crearEvento(event).subscribe((data) => {
       this.agregarEvento.emit(this.eventos);
       this.dialogRef.close(event);
+      console.log(event);
     });
   }
+
 
   guardarCambios() {
     const user_id = this.userService.getUser();
@@ -77,13 +101,34 @@ export class DialogoComponent implements OnInit {
     const titulo = this.firstFormGroup.value.titulo;
     const descripcion = this.secondFormGroup.value.descripcion;
     const fechaInicio = new Date(this.thirdFormGroup.value.fechaInicio || '');
-    const fechaFin = this.thirdFormGroup.value.fechaFin;
-    const horaInicio = this.fourthFormGroup.value.horaInicio;
-    const horaFin = this.fourthFormGroup.value.horaFin;
-    const event = { user_id, id, titulo, descripcion, fechaInicio, fechaFin, horaInicio, horaFin };
+    const fechaFin = new Date(this.thirdFormGroup.value.fechaFin || '');
+    const horaInicio = this.fourthFormGroup.value.horaInicio || '';
+    const horaFin = this.fourthFormGroup.value.horaFin || '';
+
+    // Combinar fecha y hora para obtener DateTime
+    const fechaInicioCompleta = new Date(fechaInicio);
+    const fechaFinCompleta = new Date(fechaFin);
+
+    const [horaInicioHoras, horaInicioMinutos] = horaInicio.split(':').map(Number);
+    const [horaFinHoras, horaFinMinutos] = horaFin.split(':').map(Number);
+
+    fechaInicioCompleta.setHours(horaInicioHoras, horaInicioMinutos);
+    fechaFinCompleta.setHours(horaFinHoras, horaFinMinutos);
+
+    const event = {
+      user_id,
+      id,
+      titulo,
+      descripcion,
+      fechaInicio: fechaInicioCompleta.toISOString(),
+      fechaFin: fechaFinCompleta.toISOString(),
+      horaInicio,
+      horaFin
+    };
 
     this.eventService.modificarEvento(event).subscribe(() => {
       console.log(event);
+      this.modificarEvento.emit(this.eventos);
       this.dialogRef.close(event);
     });
   }

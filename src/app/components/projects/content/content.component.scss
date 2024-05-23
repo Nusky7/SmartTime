@@ -7,6 +7,14 @@
     box-shadow: 1px 2px 6px rgba(67, 67, 67, 0.84) !important;
 }
 
+p{
+  margin-top: -1%;
+  font-size:1.1em;
+}
+.descripcion{
+  margin-top: -0.5%;
+}
+
 .border-animated {
     position: relative;
     z-index: 1;
@@ -23,7 +31,7 @@
     border: 1.8px solid red;
     border-radius: 1vw;
     opacity: 0;
-    animation: border-pulse-before 2.5s infinite;
+    animation: border-pulse-before 3s infinite;
   }
   
   @keyframes border-pulse {
@@ -51,9 +59,11 @@
   }
 
 .prioridad-1 {
-    border: 1.5px solid red !important;
-    animation: border-pulse 2s infinite;
+    border: 0.5px solid red !important;
     // box-shadow: 0 0 5px rgba(255, 0, 0, 0.623) !important;
+  }
+  .prioridad-1 p{
+    text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.68);
   }
   .prioridad-2 {
     border: 1.5px solid rgb(255, 154, 30) !important;

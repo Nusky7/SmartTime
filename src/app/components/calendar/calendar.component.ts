@@ -59,15 +59,16 @@ export class CalendarComponent implements OnInit  {
     const dialogRef = this.dialog.open(DialogoComponent, {
       width: '25vw', height: '55vh',
       panelClass: 'dialogoCalendar',
-      data: { fechaInicio: this.fechaInicio, fechaFin: this.fechaFin }
+      data: { fechaInicio: this.fechaInicio, fechaFin: this.fechaFin, horaInicio: this.horaInicio, horaFin: this.horaFin }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        
         this.eventos = [...this.eventos, result];
         this.selectedEvents = [...this.selectedEvents, result];
         this.fechaSelect(this.selectedDate);
-        this.getEventos();
+        // this.getEventos();
       }
       console.log('El dialogo fue cerrado');
     });
@@ -93,19 +94,20 @@ export class CalendarComponent implements OnInit  {
     return `${dia}/${mes}/${anyo} - ${hora}:${minuto}h`;
   }
   
+  
   fechaSelect(date: Date) {
-   console.log('Seleccionaste la fecha:', date);
-   this.selectedDate = date;
-   this.selectedEvents = this.eventos.filter((event: any) => {
-    const eventStart = new Date(event.fechaInicio).setHours(0, 0, 0, 0);
-    return eventStart === date.setHours(0, 0, 0, 0);
-    
-  });
-  if (this.selectedEvents.length > 0) {
-    console.log('Evento seleccionado:', this.selectedEvents[0].titulo);
-   
+    console.log('Seleccionaste la fecha:', date);
+    this.selectedDate = date;
+    this.selectedEvents = this.eventos.filter((event: any) => {
+      const eventStart = new Date(event.fechaInicio).setHours(0, 0, 0, 0);
+      return eventStart === date.setHours(0, 0, 0, 0);
+    });
+  
+    if (this.selectedEvents.length > 0) {
+      console.log('Evento seleccionado:', this.selectedEvents[0].titulo);
+    }
   }
-}
+  
 
 
   modificarEvento(evento: any) {
