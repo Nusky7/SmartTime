@@ -38,3 +38,22 @@
   button {
     float: right;
   }
+
+  @media only screen and (max-width: 600px) {
+    #formNots {
+      display: grid;
+      position: relative;
+      margin-left: -50%;
+    }
+  
+    .form-container {
+      width: 100%;
+      
+    }
+  
+    button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  

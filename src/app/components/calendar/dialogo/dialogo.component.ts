@@ -71,18 +71,21 @@ export class DialogoComponent implements OnInit {
     const horaInicio = this.fourthFormGroup.value.horaInicio || '00:00' ;
     const horaFin = this.fourthFormGroup.value.horaFin || '00:00';
 
+    const fechaInicioCompleta = new Date(fechaInicio);
+    const fechaFinCompleta = new Date(fechaFin);
+
     const [horaInicioHoras, horaInicioMinutos] = horaInicio.split(':').map(Number);
     const [horaFinHoras, horaFinMinutos] = horaFin.split(':').map(Number);
 
-    fechaInicio.setHours(horaInicioHoras, horaInicioMinutos);
-    fechaFin.setHours(horaFinHoras, horaFinMinutos);
+    fechaInicioCompleta.setHours(horaInicioHoras, horaInicioMinutos);
+    fechaFinCompleta.setHours(horaFinHoras, horaFinMinutos);
 
     const event = {
       user_id,
       titulo,
       descripcion,
-      fechaInicio: fechaInicio.toISOString(),
-      fechaFin: fechaFin.toISOString(),
+      fechaInicio: fechaInicioCompleta.toISOString(),
+      fechaFin: fechaFinCompleta.toISOString(),
       horaInicio,
       horaFin
     };
@@ -105,7 +108,7 @@ export class DialogoComponent implements OnInit {
     const horaInicio = this.fourthFormGroup.value.horaInicio || '';
     const horaFin = this.fourthFormGroup.value.horaFin || '';
 
-    // Combinar fecha y hora para obtener DateTime
+    
     const fechaInicioCompleta = new Date(fechaInicio);
     const fechaFinCompleta = new Date(fechaFin);
 

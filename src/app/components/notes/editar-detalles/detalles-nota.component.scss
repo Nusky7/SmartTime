@@ -1,8 +1,13 @@
 #txt{
-    // width: 100vh; 
     height: 20vh;
 }
 
 .mat-form-field{
     width: 15vw !important;
+}
+
+@media screen and (max-width: 800px){
+    .mat-form-field{
+        width: 100% !important;
+    }
 }

@@ -76,7 +76,7 @@ export class ProyectosComponent implements OnInit {
   openTareaDialog(proyectoSeleccionadoId:any): void {
     const dialogRef = this.dialog.open(TareaDialogComponent, {
       data: { parent: this, proyecto_id: proyectoSeleccionadoId },
-      width: '23vw'
+      // width: '23vw'
     });
 
   

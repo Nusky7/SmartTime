@@ -1,15 +1,23 @@
 <app-theme></app-theme>
 <app-menu></app-menu>
 
+  <!-- Menu para mostrar y ocultar los proyectos en vista móvil -->
+  <mat-toolbar *ngIf="isMobile">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Proyectos</span>
+  </mat-toolbar>
+
   <!-- Drawer izquierdo proyectos existentes -->
-  <mat-drawer-container class="drawer-container">
-    <mat-drawer mode="side" opened  [style.width.vw]="18" >
+  <mat-drawer-container class="drawer-container" >
+    <mat-drawer #drawer mode="side" opened [style.width.vw]="isMobile ? 100 : 18" >
       <app-proyectos (proyectoSeleccionado)="proyectoSeleccionado($event)"></app-proyectos>
     </mat-drawer>
 
     <!-- Drawer derecho contenido Tareas -->
     <mat-drawer-content >
-      <app-content  [proyectoId]="proyectoSeleccionadoId"></app-content>
+      <app-content *ngIf="proyectoSeleccionadoId" [proyectoId]="proyectoSeleccionadoId"></app-content>
     </mat-drawer-content>
   </mat-drawer-container>
         

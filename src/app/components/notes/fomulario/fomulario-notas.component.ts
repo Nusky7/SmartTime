@@ -10,13 +10,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class FormularioNotasComponent implements OnInit {
   nota: any = { titulo: "", contenido: "", fechaCreacion: "" };
-  mostrarForm: boolean = false;
+  mostrarForm: boolean = true;
 
   constructor(private notasService: NotesService, private userService: UserService) {}
 
   ngOnInit(): void {
   }
 
+
+  isMobile(): boolean {
+    return window.innerWidth <= 800; 
+  }
+  
   enviar() {
     const user_id = this.userService.getUser();
     this.nota.user_id = user_id;
@@ -27,6 +32,10 @@ export class FormularioNotasComponent implements OnInit {
         console.log(this.nota.user_id);
         this.notasService.nuevaNotaSubject.next(response);
         this.nota = {};
+
+        if (this.isMobile()) {
+          this.mostrarForm = false; 
+        }
       },
       error: (error: any) => {
         console.error('Error al guardar la nota:', error);

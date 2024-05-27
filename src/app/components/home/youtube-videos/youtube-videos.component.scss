@@ -24,9 +24,7 @@ border-radius: 10px;
 margin: 0.3% 2% 0 1.5%;
 
 }
-// .videoCards:hover{
-//   transform:scale(102.5%);
-// }
+
 .spinner{
   margin-left: 5%;
 }
@@ -53,7 +51,14 @@ a{
 }
 a:hover{
   color:#9b73e0;
-  // text-decoration: underline;
   text-shadow: 0 1px 0 rgb(0, 0, 0);
   transform:scale(1.1);
+}
+
+@media screen and (max-width: 800px){
+  a:hover{
+    color:#9b73e0;
+    text-shadow: none;
+    transform:none;
+  }
 }

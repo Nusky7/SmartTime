@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output,  SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { ThemePalette } from '@angular/material/core';
 import { UserService } from '../../../services/user.service';
 import { TareasService } from 'src/app/services/tareas.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
+// import { EventEmitter } from 'stream';
 
 
 export interface Task {
@@ -36,9 +37,10 @@ export class ContentComponent implements OnInit {
 
   @Input() proyectosTareas: any[] = [];
   @Input() proyectoId: number | null = null;
+
   tareas: Task[] = [];
   proyectos: Proyecto[] = [];
-  panelOpenState = false;
+  panelOpenState: boolean = false;
 
   constructor(private proyectosService: ProyectosService, private userService: UserService,
     private tareasService: TareasService, private dialog: MatDialog, private cdref: ChangeDetectorRef,
@@ -68,7 +70,6 @@ export class ContentComponent implements OnInit {
   }
 
 
-
   actualizarTareas(): void {
     if (this.proyectoId) {
       this.proyectosService.getUserTareas(this.proyectoId).subscribe((data: Task[]) => {
@@ -93,7 +94,6 @@ export class ContentComponent implements OnInit {
         console.log('Tarea modificada:', response);
         const selectedTasksCount = this.tareas.filter(task => task.completado).length;
         this.tareasService.updateSelectedTareas(task.proyectoId, selectedTasksCount);
-       
     },
       (error) => {
         console.error('Error al modificar la tarea:', error);

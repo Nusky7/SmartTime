@@ -4,22 +4,23 @@
     <mat-selection-list  #notasList>
       <mat-divider class="divider"></mat-divider>
       <mat-list-option dense *ngFor="let nota of notas" [value]="nota" >
-         <span class="nota-contenedor" (click)="abrirNota(nota); $event.stopPropagation()"
+        <div> <span class="nota-contenedor" (click)="abrirNota(nota); $event.stopPropagation()"
          (keydown.enter)="abrirNota(nota); $event.stopPropagation()" >
-          <p id="p">{{ nota.titulo }}
-          <span id="fecha">{{ formatoFecha(nota.fechaCreacion) }}</span><br>
+         <p></p>&nbsp;
+         <span id="fecha">{{ formatoFecha(nota.fechaCreacion) }}</span><br>
+          <span id="p">{{ nota.titulo }} </span><br>
           <span style="font-weight: 250;">{{ nota.descripcion }}</span>
-          <br>
+          <br><p></p>&nbsp;
         <mat-divider class="divider"></mat-divider>
-        </span>
+        </span> </div>
       </mat-list-option>
     </mat-selection-list>
   </mat-card>
 
-    <div>
+    <div style="display: flex; margin:auto;">
       <p class="txt" id="options" *ngIf="nota">
-        Notas seleccionadas: {{ notasList.selectedOptions.selected.length }} 
-        <button mat-fab color="warn" (click)="borrarSeleccion()">
+        Notas seleccionadas: {{ notasList.selectedOptions.selected.length }} </p>
+        <button mat-fab color="warn" (click)="borrarSeleccion()" id="button" >
           <div  style="position: relative; top: -5px;">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="-50px" width="35" height="35" viewBox="0,0,256,256">
               <g fill="#ffffff" fill-rule="nonzero" stroke="#000000" stroke-width="0.3" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(9.84615,9.84615)">
@@ -27,7 +28,7 @@
             </svg>
           </div>
         </button>
-      </p>
+      
     </div>
 
 </div>

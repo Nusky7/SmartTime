@@ -57,7 +57,7 @@ export class CalendarComponent implements OnInit  {
 
   abrirDialogo(): void {
     const dialogRef = this.dialog.open(DialogoComponent, {
-      width: '25vw', height: '55vh',
+      
       panelClass: 'dialogoCalendar',
       data: { fechaInicio: this.fechaInicio, fechaFin: this.fechaFin, horaInicio: this.horaInicio, horaFin: this.horaFin }
     });
@@ -111,8 +111,8 @@ export class CalendarComponent implements OnInit  {
 
   modificarEvento(evento: any) {
     const dialogRef = this.dialog.open(DialogoComponent, {
-      width: '25vw',
-      height: '55vh',
+      // width: '25vw',
+      // height: '55vh',
       data: { evento: evento }
     });
   

@@ -1,7 +1,12 @@
 <app-theme></app-theme>
 <app-menu></app-menu>
+
+<button mat-raised-button color="accent" *ngIf="isMobile()" (click)="mostrarForm = !mostrarForm" class="mat-display-xs">
+  {{ mostrarForm ? 'Ocultar' : '+ Nueva nota' }}
+</button>
+
 <div class="container" style="display: flex; margin-top: 2%;">
-  <div mat-grid-tile >
+  <div mat-grid-tile *ngIf="mostrarForm || !isMobile()" >
     <app-formulario-notas></app-formulario-notas>
   </div>
   <div mat-grid-tile>

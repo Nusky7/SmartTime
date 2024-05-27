@@ -15,6 +15,10 @@ export class NotesComponent implements OnInit {
 
   constructor() {}
 
+  isMobile(): boolean {
+    return window.innerWidth <= 800; 
+  }
+
   ngOnInit(): void {
 
     }

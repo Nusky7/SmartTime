@@ -36,9 +36,10 @@ export class ThemeComponent implements OnInit {
   //Función que elimina la clase actual y añade la seleccionada
   //Se actualiza la variable para el tema por defecto
   cambioTema(theme: string): void {
-    document.body.classList.remove(this.tema);
-    document.body.classList.add(theme);
+    const currentTheme = this.tema;
+    document.body.classList.remove(currentTheme);
     this.tema = theme;
+    document.body.classList.add(theme);
   }
 
 

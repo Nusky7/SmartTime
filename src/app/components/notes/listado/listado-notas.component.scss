@@ -22,22 +22,22 @@
 }
 
 #p{
-  font-size: 19px;
+  font-size: 1.2em;
   font-weight:500;
-  margin-top: auto;
   font-family: 'Urbanist';
 }
 #options{
   text-align: left;
 }
 span{
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 50;
+  margin-bottom: 6%;
 }
 
 .nota-contenedor{
   margin-bottom: 3%;
-  width: 65vw;
+  // width: 65vw;
   cursor:pointer;
 }
 
@@ -46,16 +46,9 @@ span{
   margin-bottom: 2%;
 }
   
-  // .nota-contenedor {
-  //   display:flex;
-  //   flex-direction: column;
-  //   width: 100%;
-  //   // padding: 8px 16px;
-  //   box-sizing: border-box;
-  //   cursor: pointer;
-  // }
   #fecha{
     display: flex;
+    margin-top: 4% !important;
   }
   
   mat-list-option {
@@ -75,3 +68,58 @@ span{
     transform: translateY(2px);
     box-shadow: 0 2px 6px rgba(83, 83, 83, 0.89) !important;
   }
+
+  @media only screen and (max-width: 800px) {
+    .container{
+     margin-left: -50%;
+    //  top: 0;
+    //  bottom:0;
+    }
+  
+    .mat-selection {
+    padding: 0 43% 10% 0;
+    
+  }
+    .mat-selection-list{
+      width: 33%;
+      margin-right: 30% !important;
+    }
+    p, span{
+      margin-left: 1%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: -4% !important;
+    }
+   
+    mat-divider{
+      display: none;
+    }
+  
+  
+    .nota-contenedor {
+      width: 100%;
+      max-width: none;
+    }
+    
+    #options {
+      width: 100%;
+      text-align: left !important;
+      margin-top: 5% !important;
+      padding-right: 116%;
+    
+    }
+  
+    #button {
+      width: 25%;
+      margin-top: 1%;
+    }
+
+    #fecha{
+      display: none !important;
+  
+  }
+   
+  
+  }
+  

@@ -1,7 +1,4 @@
-.container{
-    scrollbars: none !important;
-    padding-bottom: 4%;
-}
+
 #txtArea{
     height: 10vh !important;
 }
@@ -14,7 +11,7 @@ button:hover {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.9) !important;
 }
 @media only screen and (max-width: 800px){
-    .mat-dialog-content-container{
-        width: 90% !important;
+    .datepicker{
+        width: 113%;    
     }
 }

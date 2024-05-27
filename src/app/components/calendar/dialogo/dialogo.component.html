@@ -2,7 +2,7 @@
   <form [formGroup]="eventoForm">
     <mat-stepper orientation="vertical" formArrayName="formArray" [linear]="isLinear" #stepper>
       <mat-step [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Inserta el título del evento</ng-template>
+        <ng-template matStepLabel>Título del evento</ng-template>
         <mat-form-field>
           <mat-label>Título</mat-label>
           <input matInput placeholder="Título del Evento" formControlName="titulo" required>
@@ -13,7 +13,7 @@
       </mat-step>
 
       <mat-step [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Rellena los detalles del evento</ng-template>
+        <ng-template matStepLabel>Detalles del evento</ng-template>
         <mat-form-field>
           <mat-label>Descripción</mat-label>
           <textarea matInput id="txtArea" placeholder="Descripción del Evento" formControlName="descripcion" required></textarea>
@@ -25,9 +25,9 @@
       </mat-step>
 
       <mat-step [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>Selecciona el rango de fechas</ng-template>
+        <ng-template matStepLabel>Rango de fechas</ng-template>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="datepicker">
           <mat-label>Fecha Inicio - Fecha Fin</mat-label>
           <mat-date-range-input [rangePicker]="picker">
             <input matStartDate formControlName="fechaInicio" placeholder="Fecha Inicio">
@@ -46,7 +46,7 @@
       </mat-step>
 
       <mat-step [formGroup]="fourthFormGroup">
-        <ng-template matStepLabel>Selecciona la hora de inicio y fin</ng-template>
+        <ng-template matStepLabel>Hora de inicio y fin</ng-template>
         <mat-form-field>
           <mat-label>Hora de Inicio</mat-label>
           <input matInput type="time" formControlName="horaInicio" placeholder="Hora de Inicio" >

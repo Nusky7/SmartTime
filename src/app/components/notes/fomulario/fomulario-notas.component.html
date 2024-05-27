@@ -1,9 +1,10 @@
+
 <mat-card class="container" id="formNots" style="display: grid;">
     <div mat-grid-tile>
         <br>
         <br>
         <div class="form-container">
-            <form action="" #form="ngForm" (ngSubmit)="enviar()">
+            <form action="" #form="ngForm" *ngIf="mostrarForm" (ngSubmit)="enviar()">
                 <h2 class="txt">Agregar nota</h2>
                 <mat-form-field class="txt" appearance="fill">
                     <input matInput type="text" name="titulo" [(ngModel)]="nota.titulo" placeholder="Título" required>
@@ -14,7 +15,7 @@
                         placeholder="Descripción" required></textarea>
                 </mat-form-field>
                 <br>
-                <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">Enviar</button>
+                <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid" >Enviar</button>
             </form>
         </div>
     </div>
