@@ -1,7 +1,6 @@
 
 #fecha{
     float: right;
-    // margin-right:10%;
     color: rgb(145, 145, 145);
   font-family: 'Urbanist';
 }
@@ -16,9 +15,12 @@
 .mat-selection{
   display: grid !important;
   width: 70vw !important;
-  padding: 0% 2%;
+  padding: 2%;
   border-radius: 1vw;
   box-shadow: 0px 1.5px 6px rgba(110, 110, 110, 0.748) !important;
+}
+.mat-selection-list{
+  width: 70vw !important;
 }
 
 #p{
@@ -29,45 +31,43 @@
 #options{
   text-align: left;
 }
+button{
+  border-radius: 1vw;
+  margin-bottom: 2.5% !important;
+  margin-top: 1%;
+  right: -2% !important;
+}
+
+button:hover{
+  opacity: 0.89;
+  transform: translateY(2px);
+  box-shadow: 0 2px 6px rgba(83, 83, 83, 0.89) !important;
+}
+
 span{
   font-size: 1em;
   font-weight: 50;
-  margin-bottom: 6%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nota-contenedor{
   margin-bottom: 3%;
-  // width: 65vw;
   cursor:pointer;
 }
+  
+#fecha{
+  display: flex;
+  margin-top: 4% !important;
+}
 
-.divider{
-  margin-top: 2%;
-  margin-bottom: 2%;
+mat-list-option {
+  padding: 0;
+  margin-bottom: 1.5%;
 }
   
-  #fecha{
-    display: flex;
-    margin-top: 4% !important;
-  }
-  
-  mat-list-option {
-    padding: 0;
-    margin-bottom: 1.5%;
-  }
-  
-  button{
-    float: right;
-    border-radius: 1vw;
-    margin-bottom: 2.5% !important;
-    // margin-top: -0.5% !important;
-  }
-
-  button:hover{
-    opacity: 0.89;
-    transform: translateY(2px);
-    box-shadow: 0 2px 6px rgba(83, 83, 83, 0.89) !important;
-  }
+ 
 
   @media only screen and (max-width: 800px) {
     .container{
@@ -81,7 +81,7 @@ span{
     
   }
     .mat-selection-list{
-      width: 33%;
+      width: 40% !important;
       margin-right: 30% !important;
     }
     p, span{
@@ -112,7 +112,8 @@ span{
   
     #button {
       width: 25%;
-      margin-top: 1%;
+      margin-top: 1.5%;
+      margin-left: -1%;
     }
 
     #fecha{

@@ -5,7 +5,7 @@
         (opened)="openedPanel = openedPanel === panel ? null : panel"
         [expanded]="openedPanel === panel">
 
-    <mat-expansion-panel-header style="height: 9vh; margin-bottom: 0.5%;">
+    <mat-expansion-panel-header class="expansion-panel" >
         <mat-panel-description  (click)="proyectoSeleccionado.emit(proyecto.id);" 
             onkeydown="proyectoSeleccionado.emit(proyecto.id)" style="display: grid; padding-top: 1%;">
             <p class="txt" style="text-shadow: 0 0 0.5px black;"> 

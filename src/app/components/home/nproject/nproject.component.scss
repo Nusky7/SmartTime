@@ -13,6 +13,13 @@ textarea {
     // width: 30vw;
     height: 10vh;
 }
+.msg{
+  font-family: "Urbanist";
+  font-size: 1.2em;
+  text-shadow: 1px 1px 2px rgba(122, 122, 122, 0.411);
+  margin-top: 2%;
+}
+
 
 @media only screen and (max-width: 800px) {
     input, textarea {
@@ -23,7 +30,10 @@ textarea {
         font-size: 10px;
     }
     .newProContainer {
-        margin-top: -10% !important;
+        margin-top: -8% !important;
+    }
+    .form1{
+      margin-top: 18%;
     }
     button {
         width: 1vw;
@@ -36,6 +46,16 @@ textarea {
       .stepper mat-button {
         padding: 0 8px;
         margin-bottom: 30px !important;
+      }
+      .msg{
+        margin-top: 10%;
+        font-size: 1.3em;
+      }
+      .msg p {
+        display: none !important;
+      }
+      .mat-form-field-type-mat-date-range-input{
+        width: 100% !important;
       }
 
     

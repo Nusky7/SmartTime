@@ -13,8 +13,11 @@ import { StepperOrientation } from '@angular/cdk/stepper'; //
 })
 export class NprojectComponent implements OnInit {
 
-  stepper= false;
-  isLinear = false;
+  stepper: boolean = false;
+  isLinear: boolean = false;
+  mostrarMensaje: boolean = false;
+  
+
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required]
   });
@@ -57,6 +60,7 @@ export class NprojectComponent implements OnInit {
     this.proyectosService.crearProyecto(titulo, descripcion, userId || 0, fechaFin, fechaInicio).subscribe(
       response => {
         console.log('Proyecto creado:', response);
+        this.mostrarMensaje = true;
       },
       error => {
         console.error('Error al crear proyecto:', error);

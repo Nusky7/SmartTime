@@ -31,5 +31,15 @@
 @media only screen and (max-width: 800px){ 
   .project .grid-container {
   padding-bottom: 20% !important;
+  }
 }
+@media only screen and (max-width: 1180px) {
+  mat-card.dashboard-card {
+    height: auto !important;
+    margin-bottom: 0 !important;
+  }
+
+  mat-grid-list {
+    rowHeight: 300px;
+  }
 }

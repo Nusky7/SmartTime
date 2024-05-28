@@ -1,8 +1,6 @@
 import { Component, ViewEncapsulation  } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { UserService } from 'src/app/services/user.service';
-import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-dash',

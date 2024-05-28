@@ -74,7 +74,9 @@ export class ListadoNotasComponent implements OnInit {
     return `${día}/${mes}/${anyo}`;
   }
 
-  borrarSeleccion(): void {
+  
+  borrarSeleccion() {
+    if (this.notasList.selectedOptions.selected.length > 0) {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '350px'
     });
@@ -96,7 +98,7 @@ export class ListadoNotasComponent implements OnInit {
                 console.log(response);
                 //console.log(response.headers.get('Content-Type'));
                 this.mostrar();
-              },
+            },
               error: (error: any) => {
                 console.error("Error al eliminar la nota", error);
               }
@@ -106,5 +108,5 @@ export class ListadoNotasComponent implements OnInit {
       }
     });
   }
-  
+}
 }

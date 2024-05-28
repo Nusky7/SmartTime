@@ -2,8 +2,8 @@
 <div class="container">
   <mat-card class="mat-selection">
     <mat-selection-list  #notasList>
-      <mat-divider class="divider"></mat-divider>
       <mat-list-option dense *ngFor="let nota of notas" [value]="nota" >
+        
         <div> <span class="nota-contenedor" (click)="abrirNota(nota); $event.stopPropagation()"
          (keydown.enter)="abrirNota(nota); $event.stopPropagation()" >
          <p></p>&nbsp;
@@ -11,13 +11,12 @@
           <span id="p">{{ nota.titulo }} </span><br>
           <span style="font-weight: 250;">{{ nota.descripcion }}</span>
           <br><p></p>&nbsp;
-        <mat-divider class="divider"></mat-divider>
         </span> </div>
       </mat-list-option>
     </mat-selection-list>
   </mat-card>
 
-    <div style="display: flex; margin:auto;">
+    <div style="display: flex; justify-content: space-between; margin-left: 2%;">
       <p class="txt" id="options" *ngIf="nota">
         Notas seleccionadas: {{ notasList.selectedOptions.selected.length }} </p>
         <button mat-fab color="warn" (click)="borrarSeleccion()" id="button" >
