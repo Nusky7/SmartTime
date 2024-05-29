@@ -24,7 +24,6 @@ export class ThemeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    document.body.classList.add(this.tema);
     this.smallScreen = window.innerWidth <= 720;
   }
 
@@ -35,11 +34,9 @@ export class ThemeComponent implements OnInit {
 
   //Se actualiza la variable para el tema por defecto
   cambioTema(theme: string): void {
-    const currentTheme = this.tema;
-    document.body.classList.remove(currentTheme);
-    
-    document.body.classList.add(theme);
+    document.body.classList.remove(this.tema);
     this.tema = theme;
+    document.body.classList.add(theme);
   }
 
 

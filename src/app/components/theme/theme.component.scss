@@ -65,9 +65,18 @@ span{
     margin-bottom: 6% !important;
 }
 
+// .lazy-load-button {
+//     opacity: 0;
+//     transition: opacity 0.3s ease-in-out;
+//   }
+  
+//   .lazy-load-button.loaded {
+//     opacity: 1;
+//   }  
 
 #one {
     background-color: transparent;
+    background-image: url("/assets/one.png");
     background-size:cover !important;
     background-position: center center;
     transform: scaleX(-1);
@@ -89,6 +98,19 @@ span{
     transform:scale(1.2) rotate(30deg);
   }
   
+  #two {
+    background-image: url('/assets/two.png');
+   
+  }
+  
+  #three {
+    background-image: url("/assets/three.png");
+  }
+  
+  #four {
+    background-image: url('/assets/four.png');
+  }
+
 
 @media only screen and (max-width: 800px){
     #logo {
