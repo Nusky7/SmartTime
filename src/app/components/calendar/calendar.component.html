@@ -3,7 +3,7 @@
 
 <div class="calen">
   <mat-calendar #calendar class="txt" [selected]="selectedDate" 
-  (selectedChange)="fechaSelect($event)" (click)="getEventos()"></mat-calendar>
+  (selectedChange)="fechaSelect($event)" (click)="getEventos()" onkeydown="getEventos()"></mat-calendar>
 </div>
 
 <div class="boxEventos" style="display:grid;">

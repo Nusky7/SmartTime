@@ -27,6 +27,10 @@ export class ThemeComponent implements OnInit {
     this.smallScreen = window.innerWidth <= 720;
   }
 
+  temaInfo() {
+    alert('Si te quedas atascado en un Tema Oscuro...⁉️\n\n1. Vuelve a seleccionar el mismo tema Oscuro. \n2. Selecciona el nuevo tema que quieras aplicar.');
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event:any) {
     this.smallScreen = window.innerWidth <= 720;

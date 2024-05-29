@@ -108,7 +108,6 @@ export class DialogoComponent implements OnInit {
     const horaInicio = this.fourthFormGroup.value.horaInicio || '';
     const horaFin = this.fourthFormGroup.value.horaFin || '';
 
-    
     const fechaInicioCompleta = new Date(fechaInicio);
     const fechaFinCompleta = new Date(fechaFin);
 

@@ -65,14 +65,15 @@ span{
     margin-bottom: 6% !important;
 }
 
-// .lazy-load-button {
-//     opacity: 0;
-//     transition: opacity 0.3s ease-in-out;
-//   }
-  
-//   .lazy-load-button.loaded {
-//     opacity: 1;
-//   }  
+.info{
+    cursor: pointer;
+    text-decoration: none;
+    color:white;
+    font-size: 1.5em;
+} 
+.info:hover{
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
 
 #one {
     background-color: transparent;
@@ -123,6 +124,9 @@ span{
         max-width: 100%;
         overflow-y: hidden;
     }
+    .info{
+        font-size: 1.1em;
+    }
 }
 @media only screen and (min-width: 720px) {
     #title {
@@ -146,23 +150,20 @@ span{
     }
 }
 @media only screen and (max-width: 360px) {
-    #title {
-        display: absolute;
-        margin-left: 8%;
-    }
-    
-    .mat-fab{
-        height: 7vh;
-        width: 7vh;
-        margin-left: -1%;
-    }
-    .sidenav-container{
+  
+    .mat-toolbar {
+        position: fixed;
+        z-index: 1;
         width: 100%;
-    }
-    .mat-toolbar{
         height: 60px;
-    }
-
+      }
+      .mat-sidenav-content {
+        padding-top: 60px;
+      }
+      .sidenav-container {
+        width: 100%;
+      }
+      
 }
 @media only screen and (max-width: 320px) {
     #title {

@@ -52,12 +52,12 @@ export class NprojectComponent implements OnInit {
   }
 
   submit() {
-    const userId = this.userService.getUser();
+    const user_id = this.userService.getUser();
     const titulo = this.firstFormGroup.value.firstCtrl ?? '';
     const descripcion = this.secondFormGroup.value.secondCtrl ?? '';
     const fechaFin = this.thirdFormGroup.value.fechaFin ?? '';
     const fechaInicio = this.thirdFormGroup.value.fechaInicio ?? '';
-    this.proyectosService.crearProyecto(titulo, descripcion, userId || 0, fechaFin, fechaInicio).subscribe(
+    this.proyectosService.crearProyecto(titulo, descripcion, user_id || 0, fechaFin, fechaInicio).subscribe(
       response => {
         console.log('Proyecto creado:', response);
         this.mostrarMensaje = true;
