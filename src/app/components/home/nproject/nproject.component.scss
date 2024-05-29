@@ -40,7 +40,7 @@ textarea {
       }
       .stepper {
         font-size: 12px;
-        transform: scale(0.89); // reducir el tamaño del componente en un 10%
+        transform: scale(0.89); 
         transform-origin: top left; 
       }
       .stepper mat-button {
@@ -56,6 +56,10 @@ textarea {
       }
       .mat-form-field-type-mat-date-range-input{
         width: 100% !important;
+      }
+      .buttons{
+        display: flex;
+        margin-left: -6%;
       }
 
     

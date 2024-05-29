@@ -1,4 +1,5 @@
-import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, OnInit, ViewChildren, ElementRef  } from '@angular/core';
+
 
 @Component({
   selector: 'app-theme',
@@ -10,8 +11,6 @@ export class ThemeComponent implements OnInit {
   //Enlazar la clase al componente
   @HostBinding('class') className = "";
   
-
-
   //Definición de las variables que llaman a las clases
   lightClass = "theme-light";
   lightOneClass = "theme-light-one";
@@ -21,10 +20,11 @@ export class ThemeComponent implements OnInit {
 
   //Tema por defecto
   tema = this.lightOneClass; 
+
   constructor() {}
 
   ngOnInit(): void {
-    // document.body.classList.add(this.tema);
+    document.body.classList.add(this.tema);
     this.smallScreen = window.innerWidth <= 720;
   }
 
@@ -33,13 +33,13 @@ export class ThemeComponent implements OnInit {
     this.smallScreen = window.innerWidth <= 720;
   }
 
-  //Función que elimina la clase actual y añade la seleccionada
   //Se actualiza la variable para el tema por defecto
   cambioTema(theme: string): void {
     const currentTheme = this.tema;
     document.body.classList.remove(currentTheme);
-    this.tema = theme;
+    
     document.body.classList.add(theme);
+    this.tema = theme;
   }
 
 

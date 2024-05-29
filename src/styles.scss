@@ -107,39 +107,3 @@ $theme-dark-one: mat-dark-theme($theme-dark-one-primary, $theme-dark-one-accent,
     background-color: white;
   }
 }
-
-// Creación de una paleta de colores rosa claro personalizada:
-// $light-pink: (
-//   50: #fce4ec,
-//   100: #f8bbd0,
-//   200: #f48fb1,
-//   300: #f06292,
-//   400: #f59bb9,
-//   500: #f8a5c0,
-//   600: #cf7797,
-//   700: #c2185b,
-//   800: #ad1457,
-//   900: #880e4f,
-//   A100: #ff80ab,
-//   A200: #ff4081,
-//   A400: #f50057,
-//   A700: #c51162,
-//   contrast: (
-//     50: #000,
-//     100: #000,
-//     200: #000,
-//     300: #000,
-//     400: #000,
-//     500: #fff,
-//     600: #fff,
-//     700: #fff,
-//     800: #fff,
-//     900: #fff,
-//     A100: #000,
-//     A200: #fff,
-//     A400: #fff,
-//     A700: #fff,
-//   )
-// );
-
-// $pink-palette: mat-palette($light-pink);

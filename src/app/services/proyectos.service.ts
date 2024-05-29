@@ -20,7 +20,7 @@ export interface Task {
 
 export class ProyectosService {
 
-private apiURL = "http://localhost/API/index.php";
+private apiURL = "https://nusky7studio.es/API/index.php";
 
 
 constructor(private http: HttpClient) { }

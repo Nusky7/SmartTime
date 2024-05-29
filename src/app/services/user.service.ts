@@ -3,14 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
 
-private apiURL = "http://localhost/API/index.php";
+private apiURL = "https://nusky7studio.es/API/index.php";
 
 constructor(private http: HttpClient) { }
 
@@ -53,7 +52,7 @@ constructor(private http: HttpClient) { }
   }
 
   eliminarUsuario(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiURL}/index.php?id=${id}`);
+    return this.http.delete<any>(`${this.apiURL}?id=${id}`);
   }
   
    

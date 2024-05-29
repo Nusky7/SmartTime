@@ -1,6 +1,6 @@
 <div mat-dialog-content class="container">
   <form [formGroup]="eventoForm">
-    <mat-stepper orientation="vertical" formArrayName="formArray" [linear]="isLinear" #stepper>
+    <mat-stepper orientation="vertical" formArrayName="formArray" [linear]="true" #stepper>
       <mat-step [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Título del evento</ng-template>
         <mat-form-field>

@@ -1,5 +1,5 @@
 <div class="newProContainer">
-    <mat-stepper headerPosition="top" *ngIf="!stepper" [linear]="isLinear" [orientation]="stepperOrientation" #stepper class="stepper">
+    <mat-stepper headerPosition="top" *ngIf="!stepper" [linear]="true" [orientation]="stepperOrientation" #stepper class="stepper">
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Crea un Proyecto</ng-template>
@@ -40,8 +40,7 @@
               <mat-error *ngIf="thirdFormGroup.controls.fechaInicio.hasError('matStartDateInvalid')">Fecha de inicio inválida</mat-error>
               <mat-error *ngIf="thirdFormGroup.controls.fechaFin.hasError('matEndDateInvalid')">Fecha de fin inválida</mat-error>
           </mat-form-field>
-          <div>
-            
+          <div class="buttons">
             <button mat-button matStepperPrevious type="button">Atrás</button>
             <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
             <button mat-raised-button matStepperNext color="primary" type="button" (click)="submit()">Crear</button>
@@ -51,15 +50,5 @@
             <p class="p"> Añade tareas desde la sección Proyectos.</p>
             </div>
         </mat-step>
-        
-        <!-- <mat-step>
-          <ng-template matStepLabel>Hecho</ng-template>
-          <h4  class="txt"> Proyecto creado.</h4>
-         <span  class="txt">Añade tareas desde <br> la sección de Proyectos.</span>
-          <div>
-            <button mat-button  class="txt" color="accent" matStepperPrevious>Atrás</button>
-            <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
-          </div>
-        </mat-step> -->
       </mat-stepper>
     </div>

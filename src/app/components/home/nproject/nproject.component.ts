@@ -68,7 +68,6 @@ export class NprojectComponent implements OnInit {
     );
   }
 
-
   abrirSteps(){
     this.stepper = !this.stepper ;
   }

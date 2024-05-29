@@ -86,17 +86,21 @@ registrar() {
     this.openDialog("Rellene todos los campos con información válida");
     return;
   }
-  if (this.nombre, this.correo, this.contrasena){
+  if (this.nombre && this.correo && this.contrasena){
   this.userService.insertarUsuario(this.nombre,this.correo, this.contrasena).subscribe(
     (response) => {
-      if (!this.nombre || !passRegex.test(this.contrasena) || !this.validarCorreo(this.correo)) {
-        this.openDialog("Por favor, ingrese un nombre, un correo electrónico y una contraseña válidos");
+      if (!this.nombre || !this.validarCorreo(this.correo)) {
+        this.openDialog("Por favor, ingrese un nombre y un correo electrónico válidos");
+        return;
+      }
+      if (!passRegex.test(this.contrasena)){
+        this.openDialog("La contraseña debe tener al menos 6 caracteres");
         return;
       }
       console.log('Usuario registrado correctamente', response);
       this.openDialog("Usuario registrado. Inicie sesión.");
       this.mostrarNombre = false;
-      this.correo = this.correo;
+      this.correo;
       this.contrasena = "";
       },
     (error) => {
