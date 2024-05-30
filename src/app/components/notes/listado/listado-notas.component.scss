@@ -63,17 +63,9 @@ span{
 }
 
 mat-list-option {
-  padding: 0;
   margin-bottom: 1.5%;
 }
-
-@media only screen and (max-width: 8350px) {
-  .mat-selection-list{
-    width: 70% !important;
-  }
-}
  
-
   @media only screen and (max-width: 835px) {
     .container{
      margin-left: -50%;
@@ -84,8 +76,7 @@ mat-list-option {
     
   }
     .mat-selection-list{
-      width: 43% !important;
-      margin-right: 30% !important;
+      width: 100vw !important;
     }
     p, span{
       margin-left: 1%;
@@ -123,17 +114,3 @@ mat-list-option {
   
   }
 }
-
-  @media only screen and (max-width: 360px) {
-    .mat-selection-list{
-      width: 36% !important;
-    }
-  }
- @media only screen and (max-width: 320px) {
-    .mat-selection-list{
-      width: 35% !important;
-      
-    }
-  }
-
-  

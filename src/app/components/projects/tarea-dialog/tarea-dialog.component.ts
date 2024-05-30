@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProyectosComponent } from '../proyectos/proyectos.component';
 import { ProyectosService } from '../../../services/proyectos.service';
-// import { Task } from '../content/content.component';
-// import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-tarea-dialog',
@@ -29,7 +27,6 @@ export class TareaDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<TareaDialogComponent>, 
     @Inject(MAT_DIALOG_DATA) data: { parent: ProyectosComponent, proyecto_id: number },  private proyectosService: ProyectosService
   ) {
-    // this.tarea = { ...data.tarea };
     this.parent = data.parent;
     this.proyecto_id = data.proyecto_id;
     this.firstFormGroup = this._formBuilder.group({

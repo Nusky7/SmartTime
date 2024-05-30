@@ -36,7 +36,7 @@ export class DashComponent {
         { title: 'Crear Nuevo Proyecto', cols: 2, rows: 1, component: 'nproject' },
         { title: 'Video Tutoriales', cols: 1, rows: 2, component: 'youtube-videos' },
         { cols: 1, rows: 2, component: 'home-calendar' },
-      ];
+      ]
     }
   }
 }
