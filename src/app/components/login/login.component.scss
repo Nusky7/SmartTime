@@ -42,23 +42,7 @@ button:hover{
     font-weight: 600;
 }
 
-@media only screen and (max-width: 720px) {
-    .cards {
-        padding: 3%;
-        width: 75vw;
-        margin: 0 auto;
-        margin-top: 15%;
-    }
-}
-
-@media only screen and (max-width: 720px) {
-    .input {
-        width: 75vw;
-        margin: 0 auto;
-    }
-}
-
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 820px) {
     button {
         padding: 1%;
         width: 75vw;
@@ -68,6 +52,20 @@ button:hover{
         align-items: center;
         justify-content: center;
         margin-left: -1%;
+    }
+    .input {
+        width: 75vw;
+        margin: 0 auto;
+    }
+    .cards {
+        padding: 3%;
+        width: 75vw;
+        margin: 0 auto;
+        margin-top: 15%;
+    }
+    .footer{
+        margin: 0;
+        font-size: 15px;
     }
 }
 

@@ -10,19 +10,13 @@ export class ProjectsComponent implements OnInit {
 
   constructor( private cdref: ChangeDetectorRef) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   proyectoSeleccionadoId: number | null = null;  
   proyectosTareas: any[] = [];
   isMobile: boolean = false;
   @ViewChild('drawer') drawer: MatDrawer | undefined = undefined;
 
-  // isDrawerOpen: boolean = false;
-
-  // toggleDrawer() {
-  //   this.isDrawerOpen = !this.isDrawerOpen;
-  // }
   
   proyectoSeleccionado(proyectoId: number) {
     this.proyectoSeleccionadoId = proyectoId;

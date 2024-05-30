@@ -150,18 +150,20 @@ span{
     }
 }
 @media only screen and (max-width: 360px) {
-  
+    #title {
+        display: absolute;
+        margin-left: 6% !important;
+    }  
     .mat-toolbar {
-        position: fixed;
-        z-index: 1;
-        width: 100%;
+        width: 100% !important;
+        z-index: 1000;
         height: 60px;
-      }
-      .mat-sidenav-content {
-        padding-top: 60px;
+        
       }
       .sidenav-container {
-        width: 100%;
+        width: 100% !important;
+        opacity: 1;
+        z-index: 1000;
       }
       
 }

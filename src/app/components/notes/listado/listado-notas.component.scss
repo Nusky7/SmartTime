@@ -66,10 +66,15 @@ mat-list-option {
   padding: 0;
   margin-bottom: 1.5%;
 }
-  
+
+@media only screen and (max-width: 8350px) {
+  .mat-selection-list{
+    width: 70% !important;
+  }
+}
  
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 835px) {
     .container{
      margin-left: -50%;
     }
